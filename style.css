@@ -1,0 +1,187 @@
+@font-face {
+    font-family: 'alte-haas-grotesk';
+    src: url('alte-haas-grotesk.regular.ttf') format('truetype');
+}
+body {
+    font-family: 'alte-haas-grotesk', sans-serif;
+    background-color:#F2DCDC; /* Um cinza claro de fundo */
+}
+
+/* ------------------------------------------- */
+/* Animação Logo de Entrada (Solução Fixa CSS/JS) */
+/* ------------------------------------------- */
+
+/* 1. Estado Inicial (Antes da Animação) */
+#large-logo {
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    
+    /* Estado Inicial (O que era o 0% dos keyframes) */
+    opacity: 0; 
+    transform: translateY(100px) scale(0.7); 
+}
+
+/* 2. Estado Final (Após a Animação - Aplicado por JS) */
+#large-logo.logo-animated {
+    opacity: 1; 
+    transform: translateY(0) scale(1);
+}
+
+/* ------------------------------------------- */
+/* Estilos para o Layout "Masonry" (Pinterest) */
+/* ------------------------------------------- */
+.masonry-grid {
+    column-count: 4; 
+    column-gap: 1rem;
+}
+
+.masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+
+.masonry-item.hidden-by-filter {
+    display: none;
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+/* Regras de mídia para responsividade */
+@media (max-width: 1024px) {
+    .masonry-grid { column-count: 3; }
+}
+@media (max-width: 640px) {
+    .masonry-grid { column-count: 2; column-gap: 0.75rem; }
+}
+@media (max-width: 480px) {
+    .masonry-grid { column-count: 2; column-gap: 0.5rem; }
+}
+
+/* ------------------------------------------- */
+/* Estilos da Animação Jelly (ROLLBACK DE ESTABILIDADE) */
+/* ------------------------------------------- */
+
+/* Container do Card para a animação */
+.card {
+    position: relative;
+    overflow: hidden; /* ESSENCIAL */
+    transition: transform 0.3s ease-in-out;
+    z-index: 10;
+}
+
+/* Fundo escuro no hover */
+.card-blur {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: 0;
+    transition: opacity 0.15s ease-in;
+    z-index: 20;
+}
+
+/* Elemento Reto que sobe (Fundo Branco) */
+.curve-element {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px; /* Altura visível quando ativo */
+    background-color: #B2002F;
+    color: #F2DCDC; 
+    z-index: 25;
+    
+    /* OCULTAMENTO INICIAL via TRANSFORM */
+    transform: translateY(100%); 
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Rodapé com as informações da peça */
+.footer {
+    z-index: 30;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: 1rem;
+    color: #F2DCDC; 
+    
+    /* OCULTAMENTO INICIAL via TRANSFORM */
+    transform: translateY(120px); /* Altura do curve-element */
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ------------------------------------------- */
+/* Gatilhos para o Estado Final (Hover/Active) */
+/* ------------------------------------------- */
+
+/* Gatilho: Desktop Hover (Mouse) & Mobile Active (Touch) */
+.card:hover .curve-element, 
+.card:active .curve-element,
+.card:hover .footer,
+.card:active .footer {
+    /* REVELAÇÃO: Traz de volta para a posição original */
+    transform: translateY(0); 
+}
+
+/* Gatilho Visual: Fundo Escuro no Hover/Active */
+.card:hover .card-blur,
+.card:active .card-blur {
+    opacity: 0.6;
+}
+
+/* ------------------------------------------- */
+/* Estilos de Legibilidade e Quebra de Linha (Mobile/Desktop) */
+/* ------------------------------------------- */
+.name {
+    font-weight: bolder;
+}
+
+.job {
+    font-size: 0.875rem;
+}
+
+/* Ajuste de Fonte para Desktop (min-width: 769px) */
+@media (min-width: 769px) {
+    .footer .name {
+        font-size: 1.25rem; /* Aumenta o nome da peça */
+    }
+    .footer .job {
+        font-size: 1rem; /* Aumenta os detalhes da peça */
+    }
+}
+
+/* Mobile Adjustments (Foco na quebra de linha) */
+@media (max-width: 768px) { 
+    /* Filtros: Ocupar menos espaço, reorganizar */
+    #sticky-filters {
+        padding: 0.75rem;
+    }
+    #sticky-filters .lg\:block {
+        display: none; 
+    }
+    #sticky-filters .flex-wrap {
+        justify-content: center;
+    }
+    #sticky-filters .max-w-xs {
+        width: calc(50% - 0.5rem);
+        max-width: none;
+    }
+    #clear-filters {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    /* Texto menor no mobile para o footer e permite quebra de linha */
+    .name, .job {
+        white-space: normal; /* Permite quebra de linha */
+        overflow: hidden; 
+        text-overflow: ellipsis; 
+        display: -webkit-box; 
+        -webkit-line-clamp: 3; /* Limita a no máximo 3 linhas */
+        -webkit-box-orient: vertical;
+    }
+    .job {
+        font-size: 0.8rem;
+    }
+}

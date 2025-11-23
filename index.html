@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curadoria Afro-Brasileira</title>
+    
+    <!-- Carrega o Tailwind CSS para utilidades de estilo -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. SEÇÃO DO BANNER PRINCIPAL (ALTURA TOTAL DA TELA: h-screen) -->
+    <header id="banner" class="relative h-screen w-full bg-cover bg-center flex items-center justify-center rounded-b-xl shadow-lg overflow-hidden"
+            style="background-image: url('imagens/bg.jpg');">
+        
+        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
+  
+            <!-- Indicador para o usuário rolar para baixo -->
+            <div class="absolute -bottom-16 left-1/2 transform -translate-x-1/2">
+                <p class="text-white text-sm animate-bounce">Explore nossa curadoria</p>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white mx-auto mt-1 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. SEÇÃO DE FILTROS E GALERIA DE PRODUTOS -->
+    <main class="container mx-auto px-4 py-8">
+        
+        <!-- BARRA DE FILTROS SUPERIOR (Sticky) -->
+        <div id="sticky-filters" class="sticky top-0 z-40 w-full rounded-xl shadow-lg mb-6 p-4" style="background-color:#B2002F">
+            <div class="flex flex-wrap items-center gap-4 lg:gap-8 justify-between">
+                
+                <!-- Título da Seção (Visível em desktop, escondido em mobile) -->
+                <h2 class="text-xl font-bold text-gray-800 hidden lg:block"><img src="imagens/logo.png" alt="logo banzo" width="70vw" height="70vh"></h2>
+
+                <!-- Filtro 1: Estilista (ComboBox/Dropdown) -->
+                <div class="flex-grow max-w-xs">
+                    <label for="estilista" class="sr-only">Estilista/Marca</label>
+                    <select id="estilista" class="filter-select w-full p-2 border border-gray-300 rounded-lg text-sm focus:ring-[#F1B300]/50 focus:border-[#F1B300] cursor-pointer">
+                        <option value="">Estilista/Marca (Todos)</option>
+                        <option value="estilista-a">Estilista A</option>
+                        <option value="estilista-b">Estilista B</option>
+                        <option value="artesao-c">Artesão C</option>
+                    </select>
+                </div>
+
+                <!-- Filtro 2: Tipo de Peça (Combobox) -->
+                <div class="relative flex-grow max-w-xs">
+                    <label for="tipo-peca" class="sr-only">Tipo de Peça</label>
+                    <select id="tipo-peca" class="filter-select w-full p-2 border border-gray-300 rounded-lg text-sm focus:ring-[#F1B300]/50 focus:border-[#F1B300] cursor-pointer">
+                        <option value="">Tipo de Peça (Todos)</option>
+                        <option value="vestido">Vestidos</option>
+                        <option value="camisa">Camisas/Blusas</option>
+                        <option value="acessorio">Acessórios</option>
+                        <option value="saia">Saias</option>
+                        <option value="calcado">Calçados</option>
+                        <option value="macacao">Macacões</option>
+                    </select>
+                </div>
+                
+                <!-- Filtro 3: Paleta de Cores (Combobox) -->
+                <div class="relative flex-grow max-w-xs">
+                    <label for="paleta-cores" class="sr-only">Paleta de Cores</label>
+                    <select id="paleta-cores" class="filter-select w-full p-2 border border-gray-300 rounded-lg text-sm focus:ring-[#F1B300]/50 focus:border-[#F1B300] cursor-pointer">
+                        <option value="">Paleta de Cores (Todas)</option>
+                        <option value="vermelho">Vermelho</option>
+                        <option value="azul">Azul</option>
+                        <option value="amarelo">Amarelo</option>
+                        <option value="verde">Verde</option>
+                        <option value="rosa">Rosa</option>
+                        <option value="roxo">Roxo</option>
+                        <option value="cinza">Cinza</option>
+                    </select>
+                </div>
+
+                <!-- Botão para limpar filtros -->
+                <button id="clear-filters" class="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg font-semibold text-sm hover:bg-gray-300 transition duration-200 shadow-md">
+                    Limpar Filtros
+                </button>
+            </div>
+        </div>
+
+        <!-- Seção da Galeria -->
+        <section>
+            
+            <!-- Layout Masonry (Pinterest-style) -->
+            <div id="gallery-container" class="masonry-grid">
+                
+                <!-- Item 1: VESTIDO -->
+                <div class="masonry-item" data-estilista="estilista-a" data-tipo="vestido" data-cor="cinza">
+                    <!-- O container do card (com as classes de animação) -->
+                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="1">
+                        <!-- Imagem da Peça -->
+                        <img src="imagens/prods/1.jpg" 
+                             alt="Vestido de Algodão" class="w-full h-auto object-cover rounded-t-xl">
+                        
+                        <!-- Elemento Curva (Hover Reto) -->
+                        <div class="curve-element"></div>
+
+                        <!-- Rodapé Animado (Jelly Effect) -->
+                        <div class="footer">
+                             <div class="p-3">
+                                <div class="info">
+                                    <div class="name">Vestido de Algodão</div>
+                                    <div class="job">Estilista A | Cinza</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-blur"></div>
+                    </div>
+                </div>
+
+                <!-- Item 2: CAMISA -->
+                <div class="masonry-item" data-estilista="estilista-b" data-tipo="camisa" data-cor="verde">
+                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="2">
+                        <img src="imagens/prods/2.jpg" 
+                             alt="Camisa Estampada" class="w-full h-auto object-cover rounded-t-xl">
+                        
+                        <!-- Elemento Curva (Hover Reto) -->
+                        <div class="curve-element"></div>
+
+                        <!-- Rodapé Animado (Jelly Effect) -->
+                        <div class="footer">
+                            <div class="p-3">
+                                <div class="info">
+                                    <div class="name">Camisa Estampada</div>
+                                    <div class="job">Estilista B | Verde</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-blur"></div>
+                    </div>
+                </div>
+
+                <!-- Item 3: ACESSÓRIO (Brincos) -->
+                <div class="masonry-item" data-estilista="artesao-c" data-tipo="acessorio" data-cor="amarelo">
+                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="3">
+                        <img src="imagens/prods/3.jpg" 
+                             alt="Brincos de Búzios" class="w-full h-auto object-cover rounded-t-xl">
+                        
+                        <!-- Elemento Curva (Hover Reto) -->
+                        <div class="curve-element"></div>
+
+                        <!-- Rodapé Animado (Jelly Effect) -->
+                        <div class="footer">
+                            <div class="p-3">
+                                <div class="info">
+                                    <div class="name">Brincos de Búzios</div>
+                                    <div class="job">Artesão C | Amarelo</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-blur"></div>
+                    </div>
+                </div>
+                
+                <!-- Item 4: SAIA -->
+                <div class="masonry-item" data-estilista="estilista-a" data-tipo="saia" data-cor="vermelho">
+                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="4">
+                        <img src="imagens/prods/4.jpg" 
+                             alt="Saia Longa" class="w-full h-auto object-cover rounded-t-xl">
+                        
+                        <!-- Elemento Curva (Hover Reto) -->
+                        <div class="curve-element"></div>
+
+                        <!-- Rodapé Animado (Jelly Effect) -->
+                        <div class="footer">
+                            <div class="p-3">
+                                <div class="info">
+                                    <div class="name">Saia Longa</div>
+                                    <div class="job">Estilista A | Vermelho</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-blur"></div>
+                    </div>
+                </div>
+                
+                <!-- Item 5: ACESSÓRIO (Turbante) -->
+                <div class="masonry-item" data-estilista="artesao-c" data-tipo="acessorio" data-cor="azul">
+                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="5">
+                        <img src="imagens/prods/5.jpg" 
+                             alt="Turbante de Seda" class="w-full h-auto object-cover rounded-t-xl">
+                        
+                        <!-- Elemento Curva (Hover Reto) -->
+                        <div class="curve-element"></div>
+
+                        <!-- Rodapé Animado (Jelly Effect) -->
+                        <div class="footer">
+                            <div class="p-3">
+                                <div class="info">
+                                    <div class="name">Turbante de Seda</div>
+                                    <div class="job">Artesão C | Azul</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-blur"></div>
+                    </div>
+                </div>
+
+                <!-- Item 6: ACESSÓRIO (Bolsa) -->
+                <div class="masonry-item" data-estilista="estilista-b" data-tipo="acessorio" data-cor="rosa">
+                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="6">
+                        <img src="imagens/prods/6.jpg" 
+                             alt="Bolsa de Palha" class="w-full h-auto object-cover rounded-t-xl">
+                        
+                        <!-- Elemento Curva (Hover Reto) -->
+                        <div class="curve-element"></div>
+
+                        <!-- Rodapé Animado (Jelly Effect) -->
+                        <div class="footer">
+                            <div class="p-3">
+                                <div class="info">
+                                    <div class="name">Bolsa de Palha</div>
+                                    <div class="job">Estilista B | Rosa</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-blur"></div>
+                    </div>
+                </div>
+                
+                <!-- Item 7: CALÇADO -->
+                <div class="masonry-item" data-estilista="estilista-b" data-tipo="calcado" data-cor="roxo">
+                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="7">
+                        <img src="imagens/prods/7.jpg" 
+                             alt="Tênis African Print" class="w-full h-auto object-cover rounded-t-xl">
+                        
+                        <!-- Elemento Curva (Hover Reto) -->
+                        <div class="curve-element"></div>
+
+                        <!-- Rodapé Animado (Jelly Effect) -->
+                        <div class="footer">
+                            <div class="p-3">
+                                <div class="info">
+                                    <div class="name">Tênis African Print</div>
+                                    <div class="job">Estilista B | Roxo</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="card-blur"></div>
+                    </div>
+                </div>
+
+                <!-- Item 8: CAMISA (Kimono) -->
+                <div class="masonry-item" data-estilista="estilista-a" data-tipo="camisa" data-cor="cinza">
+                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="8">
+                        <img src="imagens/prods/8.jpg" 
+                             alt="Kimono Leve" class="w-full h-auto object-cover rounded-t-xl">
+                            
+                        <!-- Elemento Curva (Hover Reto) -->
+                        <div class="curve-element"></div>
+
+                        <!-- Rodapé Animado (Jelly Effect) -->
+                        <div class="footer">
+                            <div class="p-3">
+                                <div class="info">
+                                    <div class="name">Kimono Leve</div>
+                                    <div class="job">Estilista A | Cinza</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-blur"></div>
+                    </div>
+                </div>
+
+                <!-- Item 9: MACACÃO -->
+                <div class="masonry-item" data-estilista="artesao-c" data-tipo="macacao" data-cor="verde">
+                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="9">
+                        <img src="imagens/prods/9.jpg" 
+                             alt="Macacão Jumpsuit" class="w-full h-auto object-cover rounded-t-xl">
+                        
+                        <!-- Elemento Curva (Hover Reto) -->
+                        <div class="curve-element"></div>
+
+                        <!-- Rodapé Animado (Jelly Effect) -->
+                        <div class="footer">
+                            <div class="p-3">
+                                <div class="info">
+                                    <div class="name">Macacão Jumpsuit</div>
+                                    <div class="job">Artesão C | Verde</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-blur"></div>
+                    </div>
+                </div>
+
+                <!-- Item 10: ACESSÓRIO (Colar) -->
+                <div class="masonry-item" data-estilista="estilista-a" data-tipo="acessorio" data-cor="verde">
+                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
+                        <img src="imagens/prods/10.jpg" 
+                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
+                        
+                        <!-- Elemento Curva (Hover Reto) -->
+                        <div class="curve-element"></div>
+
+                        <!-- Rodapé Animado (Jelly Effect) -->
+                        <div class="footer">
+                            <div class="p-3">
+                                <div class="info">
+                                    <div class="name">Colar de Sementes</div>
+                                    <div class="job">Estilista A | Verde</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-blur"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Adicionando mais espaço para simular a rolagem -->
+            <div class="h-96"></div>
+
+        </section>
+    </main>
+
+    <!-- Rodapé simples -->
+    <footer class="text-center py-4 mt-8 text-gray-600 text-sm" style="background-color: #B2002F; color: #F2DCDC;">
+        Feito com muito carinho pelo time UERN/Mossoró
+    </footer>
+
+    <!-- LÓGICA JAVASCRIPT PARA FILTRAGEM E INÍCIO DA ANIMAÇÃO DO LOGO -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- INÍCIO: ANIMAÇÃO LOGO (SOLUÇÃO FIXA PARA O ERRO DOMException) ---
+            const largeLogo = document.getElementById('large-logo');
+            // Usamos setTimeout para garantir que a classe de transição seja aplicada após 
+            // o navegador ter renderizado o estado inicial. Isso dispara a animação CSS.
+            setTimeout(() => {
+                largeLogo.classList.add('logo-animated');
+            }, 100); 
+            // --- FIM: ANIMAÇÃO LOGO ---
+
+
+            // --- INÍCIO: LÓGICA DE FILTRAGEM ---
+            const filterSelectors = document.querySelectorAll('.filter-select');
+            const galleryItems = document.querySelectorAll('.masonry-item');
+            const clearButton = document.getElementById('clear-filters');
+            
+            /**
+             * Aplica os filtros selecionados aos itens da galeria.
+             */
+            function filterGallery() {
+                // Pega os valores selecionados (apenas se não for o valor vazio "")
+                const selectedFilters = {
+                    estilista: document.getElementById('estilista').value,
+                    tipo: document.getElementById('tipo-peca').value,
+                    cor: document.getElementById('paleta-cores').value
+                };
+
+                galleryItems.forEach(item => {
+                    let matchesEstilista = true;
+                    let matchesTipo = true;
+                    let matchesCor = true;
+
+                    // 1. Verifica Filtro de Estilista
+                    const itemEstilista = item.getAttribute('data-estilista');
+                    if (selectedFilters.estilista && itemEstilista !== selectedFilters.estilista) {
+                        matchesEstilista = false;
+                    }
+
+                    // 2. Verifica Filtro de Tipo de Peça
+                    const itemTipo = item.getAttribute('data-tipo');
+                    if (selectedFilters.tipo && itemTipo !== selectedFilters.tipo) {
+                        matchesTipo = false;
+                    }
+
+                    // 3. Verifica Filtro de Paleta de Cores
+                    const itemCor = item.getAttribute('data-cor');
+                    if (selectedFilters.cor && itemCor !== selectedFilters.cor) {
+                        matchesCor = false;
+                    }
+
+                    // Se todos os filtros corresponderem (ou se o filtro estiver vazio/não selecionado)
+                    const shouldShow = matchesEstilista && matchesTipo && matchesCor;
+
+                    if (shouldShow) {
+                        item.classList.remove('hidden-by-filter');
+                        item.style.display = 'block'; // Necessário para o layout masonry
+                    } else {
+                        item.classList.add('hidden-by-filter');
+                        item.style.display = 'none'; // Esconde o item
+                    }
+                });
+            }
+
+            /**
+             * Adiciona listeners a todos os selects de filtro.
+             */
+            filterSelectors.forEach(select => {
+                select.addEventListener('change', filterGallery);
+            });
+
+            /**
+             * Adiciona listener ao botão de limpar filtros.
+             */
+            clearButton.addEventListener('click', () => {
+                filterSelectors.forEach(select => {
+                    select.value = ''; // Reseta o valor do dropdown
+                });
+                filterGallery(); // Aplica o filtro (que agora mostrará todos os itens)
+            });
+
+            // Garante que o filtro seja aplicado no carregamento inicial (mostrar todos)
+            filterGallery();
+        });
+    </script>
+
+</body>
+</html>
