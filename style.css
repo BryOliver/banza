@@ -163,6 +163,7 @@ body {
     }
     #highlight-card {
         padding: 4rem 5rem; /* Mais padding interno no desktop */
+        background-color: #B2002F; 
     }
 }
 
