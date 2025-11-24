@@ -6,6 +6,58 @@ body {
     font-family: 'alte-haas-grotesk', sans-serif;
     background-color:#F2DCDC; /* Um cinza claro de fundo */
 }
+#banner {
+/* 1. COR DE FUNDO (O vermelho do seu design) */
+    background-color: #B2002F; 
+
+    /* 2. IMAGEM DE FUNDO: Substitua 'imagens/banza-logo.png' pela URL/caminho correto */
+    background-image: url('imagens/bg.png'); 
+
+    /* 3. COBERTURA TOTAL: Garante que a imagem preencha 100% da área, zoomando se necessário */
+    background-size: cover; 
+    
+    /* 4. POSICIONAMENTO: Centraliza o foco da imagem */
+    background-position: center center; 
+    
+    /* 5. Comportamento (Garante que a imagem não se repita) */
+    background-repeat: no-repeat; 
+    
+    /* Mantenha as outras propriedades: */
+    position: relative; 
+    overflow: hidden;
+
+    background-size: 190%;    
+    background-position: center center;
+}
+
+#large-logo { 
+    transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), 
+                transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+    opacity: 0; 
+    transform: translateY(100px) scale(0.7); 
+    /* Configuração para o canto inferior esquerdo */
+    text-align: left; /* Garante que o texto interno esteja alinhado à esquerda */
+    margin-right: auto; /* Garante que ele fique na esquerda se o pai for flex */
+    
+    /* Remova p-6 ou ajuste o padding conforme necessário, pois o wrapper já tem espaçamento */
+    padding: 0;
+}
+#large-logo h1 {
+    /* * O clamp(MÍNIMO, PREFERENCIAL (em vw), MÁXIMO) define:
+     * MÍNIMO (ex: 4rem): O menor tamanho que a fonte terá (em mobile).
+     * PREFERENCIAL (ex: 8vw): A fonte escala junto com a largura da tela (o tamanho ideal na maioria das telas).
+     * MÁXIMO (ex: 8rem): O maior tamanho que a fonte terá (em telas gigantes).
+     */
+    color: #F2DCDC;
+    font-size: clamp(3rem, 6vw, 4rem); /* Ajuste os valores conforme sua preferência de escala */
+    line-height: 1; /* Garante que as linhas fiquem próximas */
+}
+
+.relative.z-10.h-full.flex.items-center.justify-start.container.mx-auto.px-4 {
+    /* Manter justify-start para garantir que o logo comece na esquerda */
+    /* Você pode adicionar um max-width para o logo para garantir que ele não se sobreponha à imagem */
+    width: 50%; /* Por exemplo, limita o texto à metade esquerda da tela */
+}
 
 /* ------------------------------------------- */
 /* Animação Logo de Entrada (Solução Fixa CSS/JS) */
@@ -50,6 +102,20 @@ body {
 /* Regras de mídia para responsividade */
 @media (max-width: 1024px) {
     .masonry-grid { column-count: 3; }
+}
+@media (max-width: 768px) {
+    #banner-bg-image {
+        width: 100vw; /* No mobile, ela ocupa a largura total da tela */
+        left: 0;      /* Alinha à esquerda no mobile */
+        right: auto;  /* Remove o alinhamento à direita no mobile */
+        object-position: center; /* Centraliza a imagem no mobile */
+    }
+
+    #large-logo { /* OU o container flex que você criou */
+        margin-right: 0; /* Remove a margem para mobile */
+        width: auto; /* Deixa a largura automática */
+        text-align: center; /* Centraliza o texto no mobile */
+    }
 }
 @media (max-width: 640px) {
     .masonry-grid { column-count: 2; column-gap: 0.75rem; }

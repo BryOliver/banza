@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curadoria Afro-Brasileira</title>
-    
+    <title>Banza</title>
+    <link rel="icon" type="image/x-icon" href="imagens/favicon.svg">
     <!-- Carrega o Tailwind CSS para utilidades de estilo -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
@@ -12,17 +12,14 @@
 <body>
 
     <!-- 1. SEÇÃO DO BANNER PRINCIPAL (ALTURA TOTAL DA TELA: h-screen) -->
-    <header id="banner" class="relative h-screen w-full bg-cover bg-center flex items-center justify-center rounded-b-xl shadow-lg overflow-hidden"
-            style="background-image: url('imagens/bg.jpg');">
-        
-        <div class="absolute inset-0 bg-black bg-opacity-30"></div>
-  
-            <!-- Indicador para o usuário rolar para baixo -->
-            <div class="absolute -bottom-16 left-1/2 transform -translate-x-1/2">
-                <p class="text-white text-sm animate-bounce">Explore nossa curadoria</p>
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white mx-auto mt-1 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
+    <header id="banner" class="relative h-screen w-full shadow-lg overflow-hidden">
+
+        <!-- 3. CONTEÚDO (Logo/Texto) -->
+        <div id="banner-content-wrapper" class="relative z-10 h-full flex items-end container mx-auto px-18 pb-40 lg:px-24 lg:pb-20">
+            <div id="large-logo"><h1>Inspire-se na <br> 
+                <span class="font-bold">moda preta <br>
+                brasileira </span> <br>
+                com Banza.</h1></div>
             </div>
         </div>
     </header>
