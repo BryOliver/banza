@@ -36,12 +36,11 @@
 
                 <!-- Filtro 1: Estilista (ComboBox/Dropdown) -->
                 <div class="flex-grow max-w-xs">
-                    <label for="estilista" class="sr-only">Estilista/Marca</label>
+                    <label for="estilista" class="sr-only">Gênero</label>
                     <select id="estilista" class="filter-select w-full p-2 border border-gray-300 rounded-lg text-sm focus:ring-[#F1B300]/50 focus:border-[#F1B300] cursor-pointer">
-                        <option value="">Estilista/Marca (Todos)</option>
-                        <option value="estilista-a">Estilista A</option>
-                        <option value="estilista-b">Estilista B</option>
-                        <option value="artesao-c">Artesão C</option>
+                        <option value="">Gênero (Todos)</option>
+                        <option value="genero-f">Feminino</option>
+                        <option value="genero-m">Masculino</option>
                     </select>
                 </div>
 
@@ -52,27 +51,12 @@
                         <option value="">Tipo de Peça (Todos)</option>
                         <option value="vestido">Vestidos</option>
                         <option value="camisa">Camisas/Blusas</option>
-                        <option value="acessorio">Acessórios</option>
-                        <option value="saia">Saias</option>
-                        <option value="calcado">Calçados</option>
-                        <option value="macacao">Macacões</option>
+                        <option value="biquine">Biquíni</option>
+                        <option value="acessorio">Acessório</option>
                     </select>
                 </div>
                 
-                <!-- Filtro 3: Paleta de Cores (Combobox) -->
-                <div class="relative flex-grow max-w-xs">
-                    <label for="paleta-cores" class="sr-only">Paleta de Cores</label>
-                    <select id="paleta-cores" class="filter-select w-full p-2 border border-gray-300 rounded-lg text-sm focus:ring-[#F1B300]/50 focus:border-[#F1B300] cursor-pointer">
-                        <option value="">Paleta de Cores (Todas)</option>
-                        <option value="vermelho">Vermelho</option>
-                        <option value="azul">Azul</option>
-                        <option value="amarelo">Amarelo</option>
-                        <option value="verde">Verde</option>
-                        <option value="rosa">Rosa</option>
-                        <option value="roxo">Roxo</option>
-                        <option value="cinza">Cinza</option>
-                    </select>
-                </div>
+                
 
                 <!-- Botão para limpar filtros -->
                 <button id="clear-filters" class="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg font-semibold text-sm hover:bg-gray-300 transition duration-200 shadow-md">
@@ -88,7 +72,7 @@
             <div id="gallery-container" class="masonry-grid">
                 
                 <!-- Item 1: VESTIDO -->
-                <div class="masonry-item" data-estilista="estilista-a" data-tipo="vestido" data-cor="cinza">
+                <div class="masonry-item" data-estilista="genero-m" data-tipo="vestido" data-cor="cinza">
                     <!-- O container do card (com as classes de animação) -->
                     <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="1">
                         <!-- Imagem da Peça -->
@@ -102,8 +86,8 @@
                         <div class="footer">
                              <div class="p-3">
                                 <div class="info">
-                                    <div class="name">Vestido de Algodão</div>
-                                    <div class="job">Estilista A | Cinza</div>
+                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/retrato-de-homem-com-dreadlocks-loiros-15347520/" target="_blank">Jeferson Gomes</a></div>
+                                    <div class="job">Masculino | Vestido</div>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +97,7 @@
                 </div>
 
                 <!-- Item 2: CAMISA -->
-                <div class="masonry-item" data-estilista="estilista-b" data-tipo="camisa" data-cor="verde">
+                <div class="masonry-item" data-estilista="genero-f" data-tipo="vestido" data-cor="verde">
                     <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="2">
                         <img src="imagens/prods/2.jpg" 
                              alt="Camisa Estampada" class="w-full h-auto object-cover rounded-t-xl">
@@ -125,8 +109,8 @@
                         <div class="footer">
                             <div class="p-3">
                                 <div class="info">
-                                    <div class="name">Camisa Estampada</div>
-                                    <div class="job">Estilista B | Verde</div>
+                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/de-pe-vestido-retrato-fundo-amarelo-13939019/" target="_blank">Eliezer Miranda</a></div>
+                                    <div class="job">Feminino | Vestido</div>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +120,7 @@
                 </div>
 
                 <!-- Item 3: ACESSÓRIO (Brincos) -->
-                <div class="masonry-item" data-estilista="artesao-c" data-tipo="acessorio" data-cor="amarelo">
+                <div class="masonry-item" data-estilista="genero-f" data-tipo="camisa" data-cor="amarelo">
                     <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="3">
                         <img src="imagens/prods/3.jpg" 
                              alt="Brincos de Búzios" class="w-full h-auto object-cover rounded-t-xl">
@@ -148,8 +132,8 @@
                         <div class="footer">
                             <div class="p-3">
                                 <div class="info">
-                                    <div class="name">Brincos de Búzios</div>
-                                    <div class="job">Artesão C | Amarelo</div>
+                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/retrato-elegante-de-mulher-com-jaqueta-vibrante-33449608/" target="_blank">Alexandre  Canteiro</a></div>
+                                    <div class="job">Feminino | Camisa</div>
                                 </div>
                             </div>
                         </div>
@@ -159,7 +143,7 @@
                 </div>
                 
                 <!-- Item 4: SAIA -->
-                <div class="masonry-item" data-estilista="estilista-a" data-tipo="saia" data-cor="vermelho">
+                <div class="masonry-item" data-estilista="genero-f" data-tipo="vestido" data-cor="vermelho">
                     <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="4">
                         <img src="imagens/prods/4.jpg" 
                              alt="Saia Longa" class="w-full h-auto object-cover rounded-t-xl">
@@ -171,8 +155,8 @@
                         <div class="footer">
                             <div class="p-3">
                                 <div class="info">
-                                    <div class="name">Saia Longa</div>
-                                    <div class="job">Estilista A | Vermelho</div>
+                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/mulher-sentado-vestido-sessao-de-estudio-13724692/" target="_blank">Peter Ohis</a></div>
+                                    <div class="job">Feminino | Vestido</div>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +166,7 @@
                 </div>
                 
                 <!-- Item 5: ACESSÓRIO (Turbante) -->
-                <div class="masonry-item" data-estilista="artesao-c" data-tipo="acessorio" data-cor="azul">
+                <div class="masonry-item" data-estilista="genero-f" data-tipo="biquine" data-cor="azul">
                     <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="5">
                         <img src="imagens/prods/5.jpg" 
                              alt="Turbante de Seda" class="w-full h-auto object-cover rounded-t-xl">
@@ -194,8 +178,8 @@
                         <div class="footer">
                             <div class="p-3">
                                 <div class="info">
-                                    <div class="name">Turbante de Seda</div>
-                                    <div class="job">Artesão C | Azul</div>
+                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/mulher-levantando-a-mao-25587758/" target="_blank">Kehinde Solomon</a></div>
+                                    <div class="job">Feminino | Biquíni</div>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +189,7 @@
                 </div>
 
                 <!-- Item 6: ACESSÓRIO (Bolsa) -->
-                <div class="masonry-item" data-estilista="estilista-b" data-tipo="acessorio" data-cor="rosa">
+                <div class="masonry-item" data-estilista="genero-f" data-tipo="camisa" data-cor="rosa">
                     <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="6">
                         <img src="imagens/prods/6.jpg" 
                              alt="Bolsa de Palha" class="w-full h-auto object-cover rounded-t-xl">
@@ -217,8 +201,8 @@
                         <div class="footer">
                             <div class="p-3">
                                 <div class="info">
-                                    <div class="name">Bolsa de Palha</div>
-                                    <div class="job">Estilista B | Rosa</div>
+                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/mulher-com-blusa-vermelha-levantando-os-bracos-1544725/" target="_blank">Joshua Mcknight</a></div>
+                                    <div class="job">Feminino | Camisa</div>
                                 </div>
                             </div>
                         </div>
@@ -228,7 +212,7 @@
                 </div>
                 
                 <!-- Item 7: CALÇADO -->
-                <div class="masonry-item" data-estilista="estilista-b" data-tipo="calcado" data-cor="roxo">
+                <div class="masonry-item" data-estilista="genero-f" data-tipo="camisa" data-cor="roxo">
                     <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="7">
                         <img src="imagens/prods/7.jpg" 
                              alt="Tênis African Print" class="w-full h-auto object-cover rounded-t-xl">
@@ -240,8 +224,8 @@
                         <div class="footer">
                             <div class="p-3">
                                 <div class="info">
-                                    <div class="name">Tênis African Print</div>
-                                    <div class="job">Estilista B | Roxo</div>
+                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/moda-tendencia-pessoas-mulher-15766839/" target="_blank">Brandon Ricketts</a></div>
+                                    <div class="job">Feminino | Camisa</div>
                                 </div>
                             </div>
                         </div>
@@ -251,7 +235,7 @@
                 </div>
 
                 <!-- Item 8: CAMISA (Kimono) -->
-                <div class="masonry-item" data-estilista="estilista-a" data-tipo="camisa" data-cor="cinza">
+                <div class="masonry-item" data-estilista="genero-f" data-tipo="vestido" data-cor="cinza">
                     <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="8">
                         <img src="imagens/prods/8.jpg" 
                              alt="Kimono Leve" class="w-full h-auto object-cover rounded-t-xl">
@@ -263,8 +247,8 @@
                         <div class="footer">
                             <div class="p-3">
                                 <div class="info">
-                                    <div class="name">Kimono Leve</div>
-                                    <div class="job">Estilista A | Cinza</div>
+                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/34829544/" target="_blank">Guillermo Berlin</a></div>
+                                    <div class="job">Feminino | Camisa</div>
                                 </div>
                             </div>
                         </div>
@@ -274,7 +258,7 @@
                 </div>
 
                 <!-- Item 9: MACACÃO -->
-                <div class="masonry-item" data-estilista="artesao-c" data-tipo="macacao" data-cor="verde">
+                <div class="masonry-item" data-estilista="genero-f" data-tipo="camisa" data-cor="verde">
                     <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="9">
                         <img src="imagens/prods/9.jpg" 
                              alt="Macacão Jumpsuit" class="w-full h-auto object-cover rounded-t-xl">
@@ -286,8 +270,8 @@
                         <div class="footer">
                             <div class="p-3">
                                 <div class="info">
-                                    <div class="name">Macacão Jumpsuit</div>
-                                    <div class="job">Artesão C | Verde</div>
+                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/34840180/" target="_blank">Klaus Dieter</a></div>
+                                    <div class="job">Feminino | Camisa</div>
                                 </div>
                             </div>
                         </div>
@@ -297,7 +281,7 @@
                 </div>
 
                 <!-- Item 10: ACESSÓRIO (Colar) -->
-                <div class="masonry-item" data-estilista="estilista-a" data-tipo="acessorio" data-cor="verde">
+                <div class="masonry-item" data-estilista="genero-f" data-tipo="biquine" data-cor="verde">
                     <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
                         <img src="imagens/prods/10.jpg" 
                              alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
@@ -309,8 +293,8 @@
                         <div class="footer">
                             <div class="p-3">
                                 <div class="info">
-                                    <div class="name">Colar de Sementes</div>
-                                    <div class="job">Estilista A | Verde</div>
+                                    <div class="name"><a href="https://www.brasilcoms.com.br/checkout?checkoutId=789cac98-9066-4849-9967-5be45af67ea7" target="_blank">Brasil com S</a></div>
+                                    <div class="job">Feminino | Biquíni</div>
                                 </div>
                             </div>
                         </div>
@@ -318,14 +302,72 @@
                         <div class="card-blur"></div>
                     </div>
                 </div>
+
+                <div class="masonry-item" data-estilista="genero-f" data-tipo="biquine" data-cor="verde">
+                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
+                        <img src="imagens/prods/11.jpg" 
+                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
+                        
+                        <!-- Elemento Curva (Hover Reto) -->
+                        <div class="curve-element"></div>
+
+                        <!-- Rodapé Animado (Jelly Effect) -->
+                        <div class="footer">
+                            <div class="p-3">
+                                <div class="info">
+                                    <div class="name"><a href="https://www.brasilcoms.com.br/checkout?checkoutId=789cac98-9066-4849-9967-5be45af67ea7" target="_blank">Brasil com S</a></div>
+                                    <div class="job">Feminino | Biquíni</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-blur"></div>
+                    </div>
+                </div>
+
+                <div class="masonry-item" data-estilista="genero-m" data-tipo="acessorio" data-cor="verde">
+                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
+                        <img src="imagens/prods/12.jpg" 
+                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
+                        
+                        <!-- Elemento Curva (Hover Reto) -->
+                        <div class="curve-element"></div>
+
+                        <!-- Rodapé Animado (Jelly Effect) -->
+                        <div class="footer">
+                            <div class="p-3">
+                                <div class="info">
+                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/foto-em-close-de-um-homem-cobrindo-o-rosto-com-a-mao-com-aneis-7212834/" target="_blank">Amusan John</a></div>
+                                    <div class="job">Masculino | Acessório</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-blur"></div>
+                    </div>
+                </div>
+                
             </div>
 
             <!-- Adicionando mais espaço para simular a rolagem -->
-            <div class="h-96"></div>
+            <div class="h-20"></div>
 
         </section>
     </main>
-
+    <section id="highlight-section" class="py-16">
+        <!-- 
+            1. Container Pai: Define a borda (padding) e a cor de fundo cinza (body)
+            2. Container Filho (O Card Laranja): bg-custom-orange, arredondado, centralizado 
+        -->
+        <div id="highlight-card" class="mx-auto rounded-3xl p-10 shadow-2xl text-center">
+            <h2 class="text-4xl font-extrabold mb-4 text-white">
+                Transforme sua Curadoria
+            </h2>
+            <p class="text-xl max-w-2xl mx-auto text-white text-opacity-90">
+                Descubra novas estilistas, acompanhe as tendências da moda afro-brasileira e inspire-se com nossa seleção exclusiva de peças.
+            </p>
+        </div>
+    </section>
     <!-- Rodapé simples -->
     <footer class="text-center py-4 mt-8 text-gray-600 text-sm" style="background-color: #B2002F; color: #F2DCDC;">
         Feito com muito carinho pelo time UERN/Mossoró
@@ -358,7 +400,7 @@
                 const selectedFilters = {
                     estilista: document.getElementById('estilista').value,
                     tipo: document.getElementById('tipo-peca').value,
-                    cor: document.getElementById('paleta-cores').value
+                   
                 };
 
                 galleryItems.forEach(item => {

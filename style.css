@@ -99,6 +99,32 @@ body {
     transform: scale(0.95);
 }
 
+#highlight-section {
+     /* Garante que o fundo da seção seja cinza/claro */
+    padding: 2rem; /* Padding base para mobile */
+}
+
+#highlight-card {
+    /* Cor do Card Laranja */
+    background-color: #B2002F; 
+    
+    /* Largura que deixa a borda visível: 
+       A largura total é 100%, mas esta regra o limita a 95% para mostrar a borda. */
+    width: 95%; 
+    max-width: 1400px; /* Limita o tamanho em telas gigantes */
+    
+    /* Espaçamento interno */
+    padding: 3rem 1.5rem; /* Padding vertical e horizontal */
+}
+
+#highlight-card h2{
+    font-weight: bold;
+}
+
+#highlight-card p{
+    text-align: left;
+}
+
 /* Regras de mídia para responsividade */
 @media (max-width: 1024px) {
     .masonry-grid { column-count: 3; }
@@ -122,6 +148,22 @@ body {
 }
 @media (max-width: 480px) {
     .masonry-grid { column-count: 2; column-gap: 0.5rem; }
+    #large-logo h1{
+        text-align: left;
+        padding-left: 10px;
+    }
+    #banner {
+        background-size: 150%;
+        background-position: center center;
+    }
+}
+@media (min-width: 768px) {
+    #highlight-section {
+        padding: 4rem; /* Mais espaço vertical no desktop */
+    }
+    #highlight-card {
+        padding: 4rem 5rem; /* Mais padding interno no desktop */
+    }
 }
 
 /* ------------------------------------------- */
