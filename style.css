@@ -115,14 +115,16 @@ body {
     
     /* Espaçamento interno */
     padding: 3rem 1.5rem; /* Padding vertical e horizontal */
+    color: #F2DCDC;
 }
 
 #highlight-card h2{
     font-weight: bold;
+    text-align: left;
 }
 
 #highlight-card p{
-    text-align: left;
+    text-align: justify;
 }
 
 /* Regras de mídia para responsividade */
