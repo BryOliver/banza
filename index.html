@@ -5,49 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banza</title>
     <link rel="icon" type="image/x-icon" href="imagens/favicon.svg">
-    <!-- Carrega o Tailwind CSS para utilidades de estilo -->
+    <!-- Tailwind CSS para utilitários de espaçamento e layout rápido -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Ligação ao seu ficheiro CSS externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- 1. SEÇÃO DO BANNER PRINCIPAL (ALTURA TOTAL DA TELA: h-screen) -->
-    <header id="banner" class="relative h-screen w-full shadow-lg overflow-hidden">
-
-        <!-- 3. CONTEÚDO (Logo/Texto) -->
-        <div id="banner-content-wrapper" class="relative z-10 h-full flex items-end container mx-auto px-18 pb-40 lg:px-24 lg:pb-20">
-            <div id="large-logo"><h1>Inspire-se na <br> 
-                <span class="font-bold">moda preta <br>
-                brasileira </span> <br>
-                com Banza.</h1></div>
+    <!-- BANNER PRINCIPAL (A imagem de fundo é controlada no style.css) -->
+    <header id="banner">
+        <div id="banner-content-wrapper" class="relative z-10 h-full flex items-end container mx-auto px-6 pb-24 lg:px-24 lg:pb-20">
+            <div id="large-logo">
+                <h1>Inspire-se na <br> 
+                <span class="font-bold">moda preta <br> brasileira</span> <br> 
+                com Banza.</h1>
             </div>
         </div>
     </header>
 
-    <!-- 2. SEÇÃO DE FILTROS E GALERIA DE PRODUTOS -->
+    <!-- BARRA DE FILTROS (Sticky) -->
     <main class="container mx-auto px-4 py-8">
         
-        <!-- BARRA DE FILTROS SUPERIOR (Sticky) -->
-        <div id="sticky-filters" class="sticky top-0 z-40 w-full rounded-xl shadow-lg mb-6 p-4" style="background-color:#B2002F">
-            <div class="flex flex-wrap items-center gap-4 lg:gap-8 justify-between">
+        <div id="sticky-filters" class="sticky top-4 z-40 w-full rounded-2xl shadow-2xl mb-12 p-4">
+            <div class="flex flex-wrap items-center gap-4 justify-between">
                 
-                <!-- Título da Seção (Visível em desktop, escondido em mobile) -->
-                <h2 class="text-xl font-bold text-gray-800 hidden lg:block"><img src="imagens/logo.png" alt="logo banzo" width="70vw" height="70vh"></h2>
+                <!-- Logo secundária nos filtros -->
+                <h2 class="hidden lg:block">
+                    <img src="imagens/logo.png" alt="Banza Logo" class="h-10 w-auto opacity-90" onerror="this.style.display='none'">
+                </h2>
 
-                <!-- Filtro 1: Estilista (ComboBox/Dropdown) -->
+                <!-- Filtro de Gênero -->
                 <div class="flex-grow max-w-xs">
-                    <label for="estilista" class="sr-only">Gênero</label>
-                    <select id="estilista" class="filter-select w-full p-2 border border-gray-300 rounded-lg text-sm focus:ring-[#F1B300]/50 focus:border-[#F1B300] cursor-pointer">
+                    <select id="estilista" class="filter-dropdown w-full p-2 border border-transparent rounded-lg text-sm outline-none">
                         <option value="">Gênero (Todos)</option>
                         <option value="genero-f">Feminino</option>
                         <option value="genero-m">Masculino</option>
                     </select>
                 </div>
 
-                <!-- Filtro 2: Tipo de Peça (Combobox) -->
-                <div class="relative flex-grow max-w-xs">
-                    <label for="tipo-peca" class="sr-only">Tipo de Peça</label>
-                    <select id="tipo-peca" class="filter-select w-full p-2 border border-gray-300 rounded-lg text-sm focus:ring-[#F1B300]/50 focus:border-[#F1B300] cursor-pointer">
+                <!-- Filtro de Tipo de Peça -->
+                <div class="flex-grow max-w-xs">
+                    <select id="tipo-peca" class="filter-dropdown w-full p-2 border border-transparent rounded-lg text-sm outline-none">
                         <option value="">Tipo de Peça (Todos)</option>
                         <option value="vestido">Vestidos</option>
                         <option value="camisa">Camisas/Blusas</option>
@@ -56,982 +54,471 @@
                         <option value="sobretudo">Sobretudo</option>
                     </select>
                 </div>
-                
-                
 
-                <!-- Botão para limpar filtros -->
-                <button id="clear-filters" class="bg-gray-200 text-gray-700 py-2 px-4 rounded-lg font-semibold text-sm hover:bg-gray-300 transition duration-200 shadow-md">
-                    Limpar Filtros
+                <button id="clear-filters" class="bg-white/100 text-black py-2 px-6 rounded-lg font-bold text-sm hover:scale-105 transition-all border border-white/20 tracking-widest">
+                    Limpar
                 </button>
             </div>
         </div>
 
-        <!-- Seção da Galeria -->
-        <section>
-            
-            <!-- Layout Masonry (Pinterest-style) -->
-            <div id="gallery-container" class="masonry-grid">
-                
-                <!-- Item 1: VESTIDO -->
-                <div class="masonry-item" data-estilista="genero-m" data-tipo="vestido" data-cor="cinza">
-                    <!-- O container do card (com as classes de animação) -->
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="1">
-                        <!-- Imagem da Peça -->
-                        <img src="imagens/prods/1.jpg" 
-                             alt="Vestido de Algodão" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                             <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/retrato-de-homem-com-dreadlocks-loiros-15347520/" target="_blank">Jeferson Gomes</a></div>
-                                    <div class="job">Masculino | Vestido</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-blur"></div>
-                    </div>
-
-                </div>
-                <div class="masonry-item" data-estilista="info" data-tipo="info" data-cor="info">
-                    <div class="card bg-green-500 rounded-xl shadow-lg" style="background-color: #B2002F;">
-                        <div class="p-6 h-full flex flex-col justify-center items-start">
-                            <p class="text-lg text-justify"  style="color: #F2DCDC;">
-                                Há imagens que não cabem só no olhar. <br> São texturas que quase podem ser tocadas, cores que parecem ter cheiro, roupas que lembram vozes antigas. <br> A moda afro-brasileira é assim: ela desperta sentimentos antes de despertar ideias.
-Cada referência aqui é uma sensação guardada em foto.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Item 2: CAMISA -->
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="vestido" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="2">
-                        <img src="imagens/prods/2.jpg" 
-                             alt="Camisa Estampada" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/de-pe-vestido-retrato-fundo-amarelo-13939019/" target="_blank">Eliezer Miranda</a></div>
-                                    <div class="job">Feminino | Vestido</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <!-- Item 3: ACESSÓRIO (Brincos) -->
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="camisa" data-cor="amarelo">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="3">
-                        <img src="imagens/prods/3.jpg" 
-                             alt="Brincos de Búzios" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/retrato-elegante-de-mulher-com-jaqueta-vibrante-33449608/" target="_blank">Alexandre  Canteiro</a></div>
-                                    <div class="job">Feminino | Camisa</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-                
-                <!-- Item 4: SAIA -->
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="vestido" data-cor="vermelho">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="4">
-                        <img src="imagens/prods/4.jpg" 
-                             alt="Saia Longa" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/mulher-sentado-vestido-sessao-de-estudio-13724692/" target="_blank">Peter Ohis</a></div>
-                                    <div class="job">Feminino | Vestido</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-                
-                <!-- Item 5: ACESSÓRIO (Turbante) -->
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="biquine" data-cor="azul">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="5">
-                        <img src="imagens/prods/5.jpg" 
-                             alt="Turbante de Seda" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/mulher-levantando-a-mao-25587758/" target="_blank">Kehinde Solomon</a></div>
-                                    <div class="job">Feminino | Biquíni</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <!-- Item 6: ACESSÓRIO (Bolsa) -->
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="camisa" data-cor="rosa">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="6">
-                        <img src="imagens/prods/6.jpg" 
-                             alt="Bolsa de Palha" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/mulher-com-blusa-vermelha-levantando-os-bracos-1544725/" target="_blank">Joshua Mcknight</a></div>
-                                    <div class="job">Feminino | Camisa</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-
-                <!-- Item 7: CALÇADO -->
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="camisa" data-cor="roxo">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="7">
-                        <img src="imagens/prods/7.jpg" 
-                             alt="Tênis African Print" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/moda-tendencia-pessoas-mulher-15766839/" target="_blank">Brandon Ricketts</a></div>
-                                    <div class="job">Feminino | Camisa</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-
-                <!-- Item 8: CAMISA (Kimono) -->
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="vestido" data-cor="cinza">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="8">
-                        <img src="imagens/prods/8.jpg" 
-                             alt="Kimono Leve" class="w-full h-auto object-cover rounded-t-xl">
-                            
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/34829544/" target="_blank">Guillermo Berlin</a></div>
-                                    <div class="job">Feminino | Camisa</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <!-- Item 9: MACACÃO -->
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="camisa" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="9">
-                        <img src="imagens/prods/9.jpg" 
-                             alt="Macacão Jumpsuit" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/34840180/" target="_blank">Klaus Dieter</a></div>
-                                    <div class="job">Feminino | Camisa</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <!-- Item 10: ACESSÓRIO (Colar) -->
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="biquine" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/10.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.brasilcoms.com.br/checkout?checkoutId=789cac98-9066-4849-9967-5be45af67ea7" target="_blank">Brasil com S</a></div>
-                                    <div class="job">Feminino | Biquíni</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="biquine" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/11.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.brasilcoms.com.br/checkout?checkoutId=789cac98-9066-4849-9967-5be45af67ea7" target="_blank">Brasil com S</a></div>
-                                    <div class="job">Feminino | Biquíni</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-m" data-tipo="acessorio" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/12.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/foto-em-close-de-um-homem-cobrindo-o-rosto-com-a-mao-com-aneis-7212834/" target="_blank">Amusan John</a></div>
-                                    <div class="job">Masculino | Acessório</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-                
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="camisa" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/13.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://br.freepik.com/fotos-gratis/na-moda-jovem-sedutor-modelo-africano-com-cabelos-cacheados-perfeitos-na-elegante-blusa-laranja-e-calca-de-seda-sentado-na-cadeira-vintage-de-parede-bege_11877003.htm#fromView=search&page=1&position=9&uuid=dcd18a58-ae33-4350-9a7e-9a9178b6d0f4&query=%5Dmoda+negra+b" target="_blank">Svetlana Sokolova</a></div>
-                                    <div class="job">Feminino | Blusa</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="camisa" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/14.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://br.freepik.com/fotos-gratis/na-moda-jovem-sedutor-modelo-africano-com-cabelos-cacheados-perfeitos-na-elegante-blusa-laranja-e-calca-de-seda-sentado-na-cadeira-vintage-de-parede-bege_11877014.htm#fromView=search&page=1&position=14&uuid=dcd18a58-ae33-4350-9a7e-9a9178b6d0f4&query=%5Dmoda+negra+" target="_blank">Svetlana Sokolova</a></div>
-                                    <div class="job">Feminino | Blusa</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="vestido" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/15.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://br.freepik.com/fotos-gratis/retrato-de-mulher-ao-ar-livre-em-trajes-e-moda-africana_49590037.htm#fromView=search&page=1&position=15&uuid=dcd18a58-ae33-4350-9a7e-9a9178b6d0f4&query=%5Dmoda+negra+" target="_blank">Freepik</a></div>
-                                    <div class="job">Feminino | Vestido</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="info" data-tipo="info" data-cor="info">
-                    <div class="card bg-green-500 rounded-xl shadow-lg" style="background-color: #B2002F;">
-                        <div class="p-6 h-full flex flex-col justify-center items-start">
-                            <p class="text-lg text-justify"  style="color: #F2DCDC;">
-                                A moda afro-brasileira não é uma categoria: é o centro, é o início, é o fundamento visual de boa parte do que o Brasil chama de estilo. <br> BANZA existe para devolver esse protagonismo ao seu lugar de origem.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-m" data-tipo="acessorio" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/16.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://br.freepik.com/fotos-gratis/outono-pessoa-com-lindo-chapeu_19537744.htm#fromView=search&page=1&position=4&uuid=ca45e4e3-9e78-4cf9-8d8f-e01f19e43462&query=moda+negra+homem?log-in=google" target="_blank">Freepik</a></div>
-                                    <div class="job">Masculino | Acessório</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-m" data-tipo="camisa" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/17.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://br.freepik.com/fotos-gratis/outono-pessoa-com-lindo-chapeu_19534382.htm#fromView=search&page=1&position=6&uuid=ca45e4e3-9e78-4cf9-8d8f-e01f19e43462&query=moda+negra+homem" target="_blank">Freepik</a></div>
-                                    <div class="job">Masculino | Camisa</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-m" data-tipo="acessorio" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/18.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://br.freepik.com/fotos-gratis/retrato-de-jovem-homem-bonito_12976286.htm#fromView=search&page=2&position=29&uuid=ca45e4e3-9e78-4cf9-8d8f-e01f19e43462&query=moda+negra+homem" target="_blank">Freepik</a></div>
-                                    <div class="job">Masculino | Acessório</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-m" data-tipo="sobretudo" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/19.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://br.freepik.com/fotos-gratis/homem-africano_1429816.htm#fromView=search&page=2&position=19&uuid=ca45e4e3-9e78-4cf9-8d8f-e01f19e43462&query=moda+negra+homem" target="_blank">Sanivpetros</a></div>
-                                    <div class="job">Masculino | Sobretudo</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-m" data-tipo="acessorio" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/20.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://br.freepik.com/fotos-gratis/retrato-de-homem-afro-americano-bonito-ao-ar-livre-homem-de-terno-com-barba-sentado-no-terraco-ou-telhados-retrato-conceito-de-vida-na-cidade_28854862.htm#fromView=search&page=2&position=18&uuid=ca45e4e3-9e78-4cf9-8d8f-e01f19e43462&query=moda+negra+homem" target="_blank">Phc.Vector</a></div>
-                                    <div class="job">Masculino | Acessório</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-m" data-tipo="camisa" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/21.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://br.freepik.com/fotos-gratis/homem-bonito-e-elegante-espanhol-posando-em-um-fundo-de-parede-vermelha-em-um-dia-ensolarado_20712334.htm#fromView=search&page=2&position=43&uuid=ca45e4e3-9e78-4cf9-8d8f-e01f19e43462&query=moda+negra+homem" target="_blank">Wirestock</a></div>
-                                    <div class="job">Masculino | Camisa</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-m" data-tipo="sobretudo" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/22.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://br.freepik.com/fotos-gratis/homem-tiro-medio-ao-ar-livre_16130328.htm#fromView=search&page=1&position=0&uuid=6df68db9-3930-409f-b79b-2e7698c374f4&query=moda+negra+homem+BRASILEIRO" target="_blank">Freepik</a></div>
-                                    <div class="job">Masculino | Sobretudo</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="info" data-tipo="info" data-cor="info">
-                    <div class="card bg-green-500 rounded-xl shadow-lg" style="background-color: #B2002F;">
-                        <div class="p-6 h-full flex flex-col justify-center items-start">
-                            <p class="text-lg text-justify"  style="color: #F2DCDC;">
-                                Há algo de revolucionário no simples ato de se vestir quando o corpo carrega memórias que o mundo tentou apagar.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-m" data-tipo="camisa" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/23.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://br.freepik.com/fotos-gratis/homem-negro-com-jaqueta-marrom-em-fundo-rosa_13298895.htm#fromView=search&page=1&position=32&uuid=6df68db9-3930-409f-b79b-2e7698c374f4&query=moda+negra+homem+BRASILEIRO" target="_blank">Rawpixel.com</a></div>
-                                    <div class="job">Masculino | Camisa</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-m" data-tipo="camisa" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/24.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://br.freepik.com/fotos-gratis/homem-posando-em-estilo-retro-ao-ar-livre-com-oculos-de-sol_29334405.htm#fromView=search&page=2&position=2&uuid=6df68db9-3930-409f-b79b-2e7698c374f4&query=moda+negra+homem+BRASILEIRO" target="_blank">Freepik</a></div>
-                                    <div class="job">Masculino | Blusa</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="sobretudo" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/25.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/close-up-da-linda-modelo-feliz-20220477/" target="_blank">Sherman Trotz</a></div>
-                                    <div class="job">Feminino | Sobretudo</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="acessorio" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/26.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/retrato-19384006/" target="_blank">Yury Oliveira</a></div>
-                                    <div class="job">Feminino | Acessório</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="camisa" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/27.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/moda-tendencia-mulher-retrato-7090352/" target="_blank">Polina</a></div>
-                                    <div class="job">Feminino | Blusa</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="camisa" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/28.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/moda-tendencia-pessoa-modelo-7090161/" target="_blank">Polina</a></div>
-                                    <div class="job">Feminino | Blusa</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="camisa" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/29.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/pessoa-mulher-modelo-lindo-7088796/" target="_blank">Polina</a></div>
-                                    <div class="job">Feminino | Blusa</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="sobretudo" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/30.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/pessoa-etnica-vestindo-roupas-escuras-em-fundo-marrom-7480096/" target="_blank">Angela Roma</a></div>
-                                    <div class="job">Feminino | Sobretudo</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-m" data-tipo="acessorio" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/31.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/29637186/" target="_blank">Ben Iwara</a></div>
-                                    <div class="job">Masculino | Acessório</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-m" data-tipo="acessorio" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/32.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/foto-de-um-homem-com-uma-tiara-floral-sentado-nas-escadas-2033375/" target="_blank">Mwabonje Ringa</a></div>
-                                    <div class="job">Masculino | Acessório</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="acessorio" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/33.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/retrato-dinamico-de-pessoa-estilosa-com-cabelo-rosa-31470531/" target="_blank">Giovanna Kamimura</a></div>
-                                    <div class="job">Feminino | Acessório</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="vestido" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/34.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/retrato-deslumbrante-de-mulher-em-traje-vibrante-ao-ar-livre-33930075/" target="_blank">Rahimat Onize Shaibu</a></div>
-                                    <div class="job">Feminino | Vestido</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                <div class="masonry-item" data-estilista="genero-f" data-tipo="camisa" data-cor="verde">
-                    <div class="card bg-white rounded-xl shadow-lg transform hover:scale-[1.02] cursor-pointer" data-card-id="10">
-                        <img src="imagens/prods/35.jpg" 
-                             alt="Colar de Sementes" class="w-full h-auto object-cover rounded-t-xl">
-                        
-                        <!-- Elemento Curva (Hover Reto) -->
-                        <div class="curve-element"></div>
-
-                        <!-- Rodapé Animado (Jelly Effect) -->
-                        <div class="footer">
-                            <div class="p-3">
-                                <div class="info">
-                                    <div class="name"><a href="https://www.pexels.com/pt-br/foto/mulher-retrato-lindo-bonito-14012664/" target="_blank">Yungeric Photos</a></div>
-                                    <div class="job">Feminino | Blusa</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-blur"></div>
-                    </div>
-                </div>
-
-                 <!-- NOVO ITEM: CARD DE TEXTO FIXO -->
-                <div class="masonry-item" data-estilista="info" data-tipo="info" data-cor="info">
-                    <div class="card bg-green-500 rounded-xl shadow-lg" style="background-color: #B2002F;">
-                        <div class="p-6 h-full flex flex-col justify-center items-start">
-                            <p class="text-lg text-justify"  style="color: #F2DCDC;">
-                                BANZA é onde a referência encontra pertencimento e pertencimento encontra forma.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
+        <section id="gallery-section">
+            <!-- Container das Colunas Físicas (Mantém as imagens no lugar ao carregar mais) -->
+            <div id="gallery-container">
+                <div class="gallery-column"></div>
+                <div class="gallery-column"></div>
+                <div class="gallery-column"></div>
+                <div class="gallery-column"></div>
             </div>
 
-            <!-- Adicionando mais espaço para simular a rolagem -->
-            <div class="h-20"></div>
-
+            <!-- Botão Carregar Mais (Aparece apenas se houverem mais de 12 itens) -->
+            <div id="load-more-container" class="flex justify-center mt-12" style="display: none;">
+                <button id="load-more-btn" class="bg-black text-white px-10 py-4 font-bold hover:scale-105 transition-transform shadow-2xl uppercase tracking-widest">
+                    Ver mais peças
+                </button>
+            </div>
         </section>
+
     </main>
-<!-- NOVA SEÇÃO DE DESTAQUE -->
-<section id="highlight-section" class="py-16">
-    
-    <!-- 1. O CARD CENTRALIZADO -->
-    <div id="highlight-card" class="mx-auto rounded-3xl p-10 shadow-2xl text-center">
-        
-        <!-- NOVO: Container Flex para as Duas Colunas -->
-        <div class="flex flex-col md:flex-row items-center justify-between gap-8">
-            
-            <!-- COLUNA 1: TEXTO (Ocupa 60% do espaço no desktop) -->
-            <div class="md:w-3/5 text-left">
-                <!-- Seus textos devem estar aqui -->
-                <h2 class="text-4xl font-extrabold mb-4">
-                    Abra espaço
-                </h2>
-                <p class="text-xl text-opacity-90">
-                    Novos estilistas estão surgindo com ideias que rompem padrões, misturam referências e criam algo que só poderia ter nascido aqui.
-A moda afro-brasileira cresce em mil direções ao mesmo tempo, só precisa de espaço para perceber quanta novidade está florescendo.
-                </p>
+
+    <!-- SECÇÃO DE DESTAQUE (CARD SOBRE A MARCA) -->
+    <section id="highlight-section" class="py-24">
+        <div id="highlight-card" class="mx-auto rounded-[3rem] p-10 md:p-16 shadow-2xl">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="md:w-3/5 text-left">
+                    <h2 class="text-4xl md:text-5xl font-black mb-6 leading-tight uppercase" style="color: #F2DCDC;">Abra espaço</h2>
+                    <p class="text-xl md:text-2xl font-light opacity-100" style="color: #F2DCDC;">
+                        Novos estilistas estão surgindo com ideias que rompem padrões, misturam referências e criam algo que só poderia ter nascido aqui. A moda afro-brasileira cresce em mil direções ao mesmo tempo, só precisa de espaço para perceber quanta novidade está florescendo.
+                    </p>
+                </div>
+                <div class="md:w-2/5 flex justify-center items-center">
+                    <img src="imagens/logo4.png" alt="Logo Projeto" class="w-48 h-auto" onerror="this.parentElement.innerHTML='<span class=\'text-8xl font-black opacity-10\'>BANZA</span>'">
+                </div>
             </div>
-            
-            <!-- COLUNA 2: LOGO (Ocupa 40% do espaço no desktop) -->
-            <div class="md:w-2/5 flex justify-center items-center">
-                <!-- SUBSTITUA ISSO PELA SUA LOGO -->
-                <img src="imagens/logo4.png" 
-                     alt="Logo do Projeto" 
-                     class="w-40 h-auto opacity-100" />
-            </div>
-            
         </div>
-        <!-- Fim do Container Flex -->
-        
-    </div>
-</section>
-    <!-- Rodapé simples -->
-    <footer class="text-center py-4 mt-8 text-gray-600 text-sm" style="background-color: #B2002F; color: #F2DCDC; font-family: 'alte-haas-grotesk', sans-serif;">
+    </section>
+
+    <footer class="text-center py-4 mt-8 text-gray-600 text-sm" style="background-color: #B2002F; color: #F2DCDC; font-family: 'alte-haas-grotesk', sans-serif; font-size: 1rem;">
         Feito com muito carinho pelo time UERN/Mossoró
     </footer>
 
-    <!-- LÓGICA JAVASCRIPT PARA FILTRAGEM E INÍCIO DA ANIMAÇÃO DO LOGO -->
+    <!-- LÓGICA DE DADOS E RENDERIZAÇÃO -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // --- INÍCIO: ANIMAÇÃO LOGO (SOLUÇÃO FIXA PARA O ERRO DOMException) ---
-            const largeLogo = document.getElementById('large-logo');
-            // Usamos setTimeout para garantir que a classe de transição seja aplicada após 
-            // o navegador ter renderizado o estado inicial. Isso dispara a animação CSS.
-            setTimeout(() => {
-                largeLogo.classList.add('logo-animated');
-            }, 100); 
-            // --- FIM: ANIMAÇÃO LOGO ---
+        /**
+         * NOVA ESTRUTURA DO DATABASE
+         * Preencha com as suas informações aqui.
+         */
+        const database = [
+            { 
+                id: 1, 
+                src: "imagens/prods/1.webp", 
+                est: "genero-m", 
+                tipo: "vestido", 
+                nome: "Jeferson Gomes", 
+                descricao: "Masculino | Vestido", 
+                link: "https://www.pexels.com/pt-br/foto/retrato-de-homem-com-dreadlocks-loiros-15347520/"
+            },
+            { 
+                id: 2, 
+                src: "imagens/prods/2.webp", 
+                est: "genero-f", 
+                tipo: "vestido", 
+                nome: "Eliezer Miranda", 
+                descricao: "Feminino | Vestido", 
+                link: "https://www.pexels.com/pt-br/foto/de-pe-vestido-retrato-fundo-amarelo-13939019/"
+            },
+            { 
+                id: 3, 
+                src: "imagens/prods/3.webp", 
+                est: "genero-f", 
+                tipo: "camisa", 
+                nome: "Alexandre  Canteiro", 
+                descricao: "Feminino | Camisa", 
+                link: "https://www.pexels.com/pt-br/foto/retrato-elegante-de-mulher-com-jaqueta-vibrante-33449608/"
+            },
+            { 
+                id: 4, 
+                src: "imagens/prods/4.webp", 
+                est: "genero-f", 
+                tipo: "vestido", 
+                nome: "Peter Ohis", 
+                descricao: "Feminino | Vestido", 
+                link: "https://www.pexels.com/pt-br/foto/mulher-sentado-vestido-sessao-de-estudio-13724692/"
+            },
+            { 
+                id: 5, 
+                src: "imagens/prods/5.webp", 
+                est: "genero-f", 
+                tipo: "biquine", 
+                nome: "Kehinde Solomon", 
+                descricao: "Feminino | Biquine", 
+                link: "https://www.pexels.com/pt-br/foto/mulher-levantando-a-mao-25587758/"
+            },
+            { 
+                id: 6, 
+                src: "imagens/prods/6.webp", 
+                est: "genero-f", 
+                tipo: "camisa", 
+                nome: "Joshua Mcknight", 
+                descricao: "Feminino | Camisa", 
+                link: "https://www.pexels.com/pt-br/foto/mulher-com-blusa-vermelha-levantando-os-bracos-1544725/"
+            },
+            { 
+                id: 7, 
+                src: "imagens/prods/7.webp", 
+                est: "genero-f", 
+                tipo: "camisa", 
+                nome: "Brandon Ricketts", 
+                descricao: "Feminino | Camisa", 
+                link: "https://www.pexels.com/pt-br/foto/moda-tendencia-pessoas-mulher-15766839/"
+            },
+            { 
+                id: 8, 
+                src: "imagens/prods/8.webp", 
+                est: "genero-f", 
+                tipo: "vestido", 
+                nome: "Guillermo Berlin", 
+                descricao: "Feminino | Vestido", 
+                link: "https://www.pexels.com/pt-br/foto/34829544/"
+            },
+            { 
+                id: 9, 
+                src: "imagens/prods/9.webp", 
+                est: "genero-f", 
+                tipo: "camisa", 
+                nome: "Klaus Dieter", 
+                descricao: "Feminino | Camisa", 
+                link: "https://www.pexels.com/pt-br/foto/34840180/"
+            },
+            { 
+                id: 10, 
+                src: "imagens/prods/10.webp", 
+                est: "genero-f", 
+                tipo: "biquine", 
+                nome: "Brasil com S", 
+                descricao: "Feminino | Biquine", 
+                link: "https://www.brasilcoms.com.br/checkout?checkoutId=789cac98-9066-4849-9967-5be45af67ea7"
+            },
+            { 
+                id: 11, 
+                src: "imagens/prods/11.webp", 
+                est: "genero-f", 
+                tipo: "biquine", 
+                nome: "Brasil com S", 
+                descricao: "Feminino | Biquine", 
+                link: "https://www.brasilcoms.com.br/checkout?checkoutId=789cac98-9066-4849-9967-5be45af67ea7"
+            },
+            { 
+                id: 12, 
+                src: "imagens/prods/12.webp", 
+                est: "genero-m", 
+                tipo: "acessorio", 
+                nome: "Amusan John", 
+                descricao: "Masculino | Acessório", 
+                link: "https://www.pexels.com/pt-br/foto/foto-em-close-de-um-homem-cobrindo-o-rosto-com-a-mao-com-aneis-7212834/"
+            },
+            { 
+                id: 13, 
+                src: "imagens/prods/13.webp", 
+                est: "genero-f", 
+                tipo: "camisa", 
+                nome: "Svetlana Sokolova", 
+                descricao: "Feminino | Camisa", 
+                link: "https://br.freepik.com/fotos-gratis/na-moda-jovem-sedutor-modelo-africano-com-cabelos-cacheados-perfeitos-na-elegante-blusa-laranja-e-calca-de-seda-sentado-na-cadeira-vintage-de-parede-bege_11877003.htm#fromView=search&page=1&position=9&uuid=dcd18a58-ae33-4350-9a7e-9a9178b6d0f4&query=%5Dmoda+negra+b"
+            },
+            { 
+                id: 14, 
+                src: "imagens/prods/14.webp", 
+                est: "genero-f", 
+                tipo: "camisa", 
+                nome: "Svetlana Sokolova", 
+                descricao: "Feminino | Camisa", 
+                link: "https://br.freepik.com/fotos-gratis/na-moda-jovem-sedutor-modelo-africano-com-cabelos-cacheados-perfeitos-na-elegante-blusa-laranja-e-calca-de-seda-sentado-na-cadeira-vintage-de-parede-bege_11877014.htm#fromView=search&page=1&position=14&uuid=dcd18a58-ae33-4350-9a7e-9a9178b6d0f4&query=%5Dmoda+negra+"
+            },
+            { 
+                id: 15, 
+                src: "imagens/prods/15.webp", 
+                est: "genero-f", 
+                tipo: "vestido", 
+                nome: "Freepik", 
+                descricao: "Feminino | Vestido", 
+                link: "https://br.freepik.com/fotos-gratis/retrato-de-mulher-ao-ar-livre-em-trajes-e-moda-africana_49590037.htm#fromView=search&page=1&position=15&uuid=dcd18a58-ae33-4350-9a7e-9a9178b6d0f4&query=%5Dmoda+negra+"
+            },
+            { 
+                id: 16, 
+                src: "imagens/prods/16.webp", 
+                est: "genero-m", 
+                tipo: "acessorio", 
+                nome: "Freepik", 
+                descricao: "Masculino | Acessório", 
+                link: "https://br.freepik.com/fotos-gratis/outono-pessoa-com-lindo-chapeu_19537744.htm#fromView=search&page=1&position=4&uuid=ca45e4e3-9e78-4cf9-8d8f-e01f19e43462&query=moda+negra+homem?log-in=google"
+            },
+            { 
+                id: 17, 
+                src: "imagens/prods/17.webp", 
+                est: "genero-m", 
+                tipo: "camisa", 
+                nome: "Freepik", 
+                descricao: "Masculino | Camisa", 
+                link: "https://br.freepik.com/fotos-gratis/outono-pessoa-com-lindo-chapeu_19534382.htm#fromView=search&page=1&position=6&uuid=ca45e4e3-9e78-4cf9-8d8f-e01f19e43462&query=moda+negra+homem"
+            },
+            { 
+                id: 18, 
+                src: "imagens/prods/18.webp", 
+                est: "genero-m", 
+                tipo: "acessorio", 
+                nome: "Freepik", 
+                descricao: "Masculino | Acessório", 
+                link: "https://br.freepik.com/fotos-gratis/retrato-de-jovem-homem-bonito_12976286.htm#fromView=search&page=2&position=29&uuid=ca45e4e3-9e78-4cf9-8d8f-e01f19e43462&query=moda+negra+homem"
+            },
+            { 
+                id: 19, 
+                src: "imagens/prods/19.webp", 
+                est: "genero-m", 
+                tipo: "sobretudo", 
+                nome: "Sanivpetros", 
+                descricao: "Masculino | Sobreduto", 
+                link: "https://br.freepik.com/fotos-gratis/homem-africano_1429816.htm#fromView=search&page=2&position=19&uuid=ca45e4e3-9e78-4cf9-8d8f-e01f19e43462&query=moda+negra+homem"
+            },
+            { 
+                id: 20, 
+                src: "imagens/prods/20.webp", 
+                est: "genero-m", 
+                tipo: "acessorio", 
+                nome: "Phc.Vector", 
+                descricao: "Masculino | Acessório", 
+                link: "https://br.freepik.com/fotos-gratis/retrato-de-homem-afro-americano-bonito-ao-ar-livre-homem-de-terno-com-barba-sentado-no-terraco-ou-telhados-retrato-conceito-de-vida-na-cidade_28854862.htm#fromView=search&page=2&position=18&uuid=ca45e4e3-9e78-4cf9-8d8f-e01f19e43462&query=moda+negra+homem"
+            },
+            { 
+                id: 21, 
+                src: "imagens/prods/21.webp", 
+                est: "genero-m", 
+                tipo: "camisa", 
+                nome: "Wirestock", 
+                descricao: "Masculino | Camisa", 
+                link: "https://br.freepik.com/fotos-gratis/homem-bonito-e-elegante-espanhol-posando-em-um-fundo-de-parede-vermelha-em-um-dia-ensolarado_20712334.htm#fromView=search&page=2&position=43&uuid=ca45e4e3-9e78-4cf9-8d8f-e01f19e43462&query=moda+negra+homem"
+            },
+            { 
+                id: 22, 
+                src: "imagens/prods/22.webp", 
+                est: "genero-m", 
+                tipo: "sobretudo", 
+                nome: "Freepik", 
+                descricao: "Masculino | Sobreduto", 
+                link: "https://br.freepik.com/fotos-gratis/homem-tiro-medio-ao-ar-livre_16130328.htm#fromView=search&page=1&position=0&uuid=6df68db9-3930-409f-b79b-2e7698c374f4&query=moda+negra+homem+BRASILEIRO"
+            },
+            { 
+                id: 23, 
+                src: "imagens/prods/23.webp", 
+                est: "genero-m", 
+                tipo: "camisa", 
+                nome: "Rawpixel.com", 
+                descricao: "Masculino | Camisa", 
+                link: "https://br.freepik.com/fotos-gratis/homem-negro-com-jaqueta-marrom-em-fundo-rosa_13298895.htm#fromView=search&page=1&position=32&uuid=6df68db9-3930-409f-b79b-2e7698c374f4&query=moda+negra+homem+BRASILEIRO"
+            },
+            { 
+                id: 24, 
+                src: "imagens/prods/24.webp", 
+                est: "genero-m", 
+                tipo: "acessorio", 
+                nome: "Freepik", 
+                descricao: "Masculino | Acessório", 
+                link: "https://br.freepik.com/fotos-gratis/homem-posando-em-estilo-retro-ao-ar-livre-com-oculos-de-sol_29334405.htm#fromView=search&page=2&position=2&uuid=6df68db9-3930-409f-b79b-2e7698c374f4&query=moda+negra+homem+BRASILEIRO"
+            },
+            { 
+                id: 25, 
+                src: "imagens/prods/25.webp", 
+                est: "genero-f", 
+                tipo: "sobretudo", 
+                nome: "Sherman Trotz", 
+                descricao: "Feminino | Acessório", 
+                link: "https://www.pexels.com/pt-br/foto/close-up-da-linda-modelo-feliz-20220477/"
+            },
+            { 
+                id: 26, 
+                src: "imagens/prods/26.webp", 
+                est: "genero-f", 
+                tipo: "acessorio", 
+                nome: "Yury Oliveira", 
+                descricao: "Feminino | Acessório", 
+                link: "https://www.pexels.com/pt-br/foto/retrato-19384006/"
+            },
+            { 
+                id: 27, 
+                src: "imagens/prods/27.webp", 
+                est: "genero-f", 
+                tipo: "camisa", 
+                nome: "Polina", 
+                descricao: "Feminino | Blusa", 
+                link: "https://www.pexels.com/pt-br/foto/moda-tendencia-mulher-retrato-7090352/"
+            },
+            { 
+                id: 28, 
+                src: "imagens/prods/28.webp", 
+                est: "genero-f", 
+                tipo: "camisa", 
+                nome: "Polina", 
+                descricao: "Feminino | Blusa", 
+                link: "https://www.pexels.com/pt-br/foto/moda-tendencia-pessoa-modelo-7090161/"
+            },
+            { 
+                id: 29, 
+                src: "imagens/prods/29.webp", 
+                est: "genero-f", 
+                tipo: "camisa", 
+                nome: "Polina", 
+                descricao: "Feminino | Blusa", 
+                link: "https://www.pexels.com/pt-br/foto/pessoa-mulher-modelo-lindo-7088796/"
+            },
+            { 
+                id: 30, 
+                src: "imagens/prods/30.webp", 
+                est: "genero-f", 
+                tipo: "sobretudo", 
+                nome: "Angela Roma", 
+                descricao: "Feminino | Sobretudo", 
+                link: "https://www.pexels.com/pt-br/foto/pessoa-etnica-vestindo-roupas-escuras-em-fundo-marrom-7480096/"
+            },
+            { 
+                id: 31, 
+                src: "imagens/prods/31.webp", 
+                est: "genero-m", 
+                tipo: "acessorio", 
+                nome: "Ben Iwara", 
+                descricao: "Masculino | Acessório", 
+                link: "https://www.pexels.com/pt-br/foto/29637186/"
+            },
+            { 
+                id: 32, 
+                src: "imagens/prods/32.webp", 
+                est: "genero-m", 
+                tipo: "acessorio", 
+                nome: "Mwabonje Ringa", 
+                descricao: "Masculino | Acessório", 
+                link: "https://www.pexels.com/pt-br/foto/foto-de-um-homem-com-uma-tiara-floral-sentado-nas-escadas-2033375/"
+            },
+            { 
+                id: 33, 
+                src: "imagens/prods/33.webp", 
+                est: "genero-f", 
+                tipo: "acessorio", 
+                nome: "Giovanna Kamimura", 
+                descricao: "Feminino | Acessório", 
+                link: "https://www.pexels.com/pt-br/foto/retrato-dinamico-de-pessoa-estilosa-com-cabelo-rosa-31470531/"
+            },
+            { 
+                id: 34, 
+                src: "imagens/prods/34.webp", 
+                est: "genero-f", 
+                tipo: "vestido", 
+                nome: "Rahimat Onize Shaibu", 
+                descricao: "Feminino | Vestido", 
+                link: "https://www.pexels.com/pt-br/foto/retrato-deslumbrante-de-mulher-em-traje-vibrante-ao-ar-livre-33930075/"
+            },
+            { 
+                id: 35, 
+                src: "imagens/prods/35.webp", 
+                est: "genero-f", 
+                tipo: "camisa", 
+                nome: "Yungeric Photos", 
+                descricao: "Feminino | Camisa", 
+                link: "https://www.pexels.com/pt-br/foto/mulher-retrato-lindo-bonito-14012664/"
+            },
+        ];
 
+        let currentLimit = 12;
+        const itemsPerPage = 12;
+        let displayedCount = 0; 
 
-            // --- INÍCIO: LÓGICA DE FILTRAGEM ---
-            const filterSelectors = document.querySelectorAll('.filter-select');
-            const galleryItems = document.querySelectorAll('.masonry-item');
-            const clearButton = document.getElementById('clear-filters');
-            
-            /**
-             * Aplica os filtros selecionados aos itens da galeria.
-             */
-            function filterGallery() {
-                // Pega os valores selecionados (apenas se não for o valor vazio "")
-                const selectedFilters = {
-                    estilista: document.getElementById('estilista').value,
-                    tipo: document.getElementById('tipo-peca').value,
-                   
-                };
+        /**
+         * FUNÇÃO DE RENDERIZAÇÃO OTIMIZADA
+         * @param {boolean} isNewFilter - Define se deve limpar a galeria (true) ou apenas anexar (false)
+         */
+        function renderGallery(isNewFilter = false) {
+            const selEst = document.getElementById('estilista').value;
+            const selTipo = document.getElementById('tipo-peca').value;
+            const columns = Array.from(document.querySelectorAll('.gallery-column'));
+            const loadMoreContainer = document.getElementById('load-more-container');
 
-                galleryItems.forEach(item => {
-                    let matchesEstilista = true;
-                    let matchesTipo = true;
-                    let matchesCor = true;
-
-                    // 1. Verifica Filtro de Estilista
-                    const itemEstilista = item.getAttribute('data-estilista');
-                    if (selectedFilters.estilista && itemEstilista !== selectedFilters.estilista) {
-                        matchesEstilista = false;
-                    }
-
-                    // 2. Verifica Filtro de Tipo de Peça
-                    const itemTipo = item.getAttribute('data-tipo');
-                    if (selectedFilters.tipo && itemTipo !== selectedFilters.tipo) {
-                        matchesTipo = false;
-                    }
-
-                    // 3. Verifica Filtro de Paleta de Cores
-                    const itemCor = item.getAttribute('data-cor');
-                    if (selectedFilters.cor && itemCor !== selectedFilters.cor) {
-                        matchesCor = false;
-                    }
-
-                    // Se todos os filtros corresponderem (ou se o filtro estiver vazio/não selecionado)
-                    const shouldShow = matchesEstilista && matchesTipo && matchesCor;
-
-                    if (shouldShow) {
-                        item.classList.remove('hidden-by-filter');
-                        item.style.display = 'block'; // Necessário para o layout masonry
-                    } else {
-                        item.classList.add('hidden-by-filter');
-                        item.style.display = 'none'; // Esconde o item
-                    }
-                });
+            if (isNewFilter) {
+                columns.forEach(col => col.innerHTML = '');
+                displayedCount = 0;
+                currentLimit = 12;
             }
 
-            /**
-             * Adiciona listeners a todos os selects de filtro.
-             */
-            filterSelectors.forEach(select => {
-                select.addEventListener('change', filterGallery);
+            // Filtro dinâmico
+            const filtered = database.filter(item => {
+                const matchesEst = !selEst || item.est === selEst;
+                const matchesTipo = !selTipo || item.tipo === selTipo;
+                return matchesEst && matchesTipo;
             });
 
-            /**
-             * Adiciona listener ao botão de limpar filtros.
-             */
-            clearButton.addEventListener('click', () => {
-                filterSelectors.forEach(select => {
-                    select.value = ''; // Reseta o valor do dropdown
-                });
-                filterGallery(); // Aplica o filtro (que agora mostrará todos os itens)
+            // Seleciona a próxima fatia (slice) para exibir
+            const toAppend = filtered.slice(displayedCount, currentLimit);
+            const activeCols = columns.filter(col => getComputedStyle(col).display !== 'none');
+
+            toAppend.forEach((item, index) => {
+                const colIndex = (displayedCount + index) % activeCols.length;
+                
+                const itemDiv = document.createElement('div');
+                itemDiv.className = "masonry-item";
+                itemDiv.innerHTML = `
+                    <div class="card shadow-md">
+                        <div class="card-blur"></div>
+                        <img src="${item.src}" alt="${item.nome}" onerror="this.src='https://via.placeholder.com/400x600?text=Peça+Indisponível'">
+                        <div class="curve-element">
+                            <a href="${item.link}" target="_blank" class="author-link font-bold text-xl leading-tight">
+                                ${item.nome}
+                            </a>
+                            <span class="text-sm opacity-90 mt-1 uppercase font-medium">
+                                ${item.descricao}
+                            </span>
+                        </div>
+                    </div>
+                `;
+                activeCols[colIndex].appendChild(itemDiv);
+
+                // Delay suave para o fade-in de cada item
+                setTimeout(() => {
+                    itemDiv.classList.add('fade-in');
+                }, 50 * index);
             });
 
-            // Garante que o filtro seja aplicado no carregamento inicial (mostrar todos)
-            filterGallery();
+            // Atualiza o total de itens já mostrados na tela
+            displayedCount += toAppend.length;
+
+            // Gerencia o botão "Ver Mais"
+            if (loadMoreContainer) {
+                loadMoreContainer.style.display = (filtered.length > currentLimit) ? 'flex' : 'none';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const largeLogo = document.getElementById('large-logo');
+            if (largeLogo) setTimeout(() => largeLogo.classList.add('logo-animated'), 200);
+
+            // Ouvinte: Ver Mais (Apenas anexa novos itens)
+            document.getElementById('load-more-btn').addEventListener('click', () => {
+                currentLimit += itemsPerPage;
+                renderGallery(false); 
+            });
+
+            // Ouvintes: Filtros (Limpam e reiniciam)
+            document.querySelectorAll('select').forEach(select => {
+                select.addEventListener('change', () => renderGallery(true));
+            });
+
+            document.getElementById('clear-filters').addEventListener('click', () => {
+                document.getElementById('estilista').value = '';
+                document.getElementById('tipo-peca').value = '';
+                renderGallery(true);
+            });
+
+            // Ajuste responsivo ao girar tela ou redimensionar
+            window.addEventListener('resize', () => renderGallery(true));
+
+            // Chamada inicial
+            renderGallery(true);
         });
     </script>
-
 </body>
 </html>
