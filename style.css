@@ -49,7 +49,6 @@ body {
     line-height: 1;
 }
 
-/* --- GALERIA MASONRY ESTÁVEL --- */
 #gallery-container {
     display: flex;
     gap: 1.5rem;
@@ -64,7 +63,6 @@ body {
     gap: 1.5rem;
 }
 
-/* Responsividade das Colunas */
 @media (max-width: 640px) {
     .gallery-column:nth-child(2), .gallery-column:nth-child(3), .gallery-column:nth-child(4) { display: none; }
     .text-4xl:text-align(center)
@@ -95,7 +93,6 @@ body {
     transform: translateY(0);
 }
 
-/* --- CARDS E ANIMAÇÃO JELLY --- */
 .card {
     position: relative;
     overflow: hidden;

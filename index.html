@@ -5,36 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Banza</title>
     <link rel="icon" type="image/x-icon" href="imagens/favicon.svg">
-    <!-- Tailwind CSS para utilitários de espaçamento e layout rápido -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Ligação ao seu ficheiro CSS externo -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- BANNER PRINCIPAL (A imagem de fundo é controlada no style.css) -->
     <header id="banner">
         <div id="banner-content-wrapper" class="relative z-10 h-full flex items-end container mx-auto px-6 pb-24 lg:px-24 lg:pb-20">
             <div id="large-logo">
                 <h1>Inspire-se na <br> 
-                <span class="font-bold">moda preta <br> brasileira</span> <br> 
+                <span class="font-bold">moda negra <br> brasileira</span> <br> 
                 com Banza.</h1>
             </div>
         </div>
     </header>
 
-    <!-- BARRA DE FILTROS (Sticky) -->
     <main class="container mx-auto px-4 py-8">
         
         <div id="sticky-filters" class="sticky top-4 z-40 w-full rounded-2xl shadow-2xl mb-12 p-4">
             <div class="flex flex-wrap items-center gap-4 justify-between">
-                
-                <!-- Logo secundária nos filtros -->
                 <h2 class="hidden lg:block">
                     <img src="imagens/logo.png" alt="Banza Logo" class="h-10 w-auto opacity-90" onerror="this.style.display='none'">
                 </h2>
 
-                <!-- Filtro de Gênero -->
                 <div class="flex-grow max-w-xs">
                     <select id="estilista" class="filter-dropdown w-full p-2 border border-transparent rounded-lg text-sm outline-none">
                         <option value="">Gênero (Todos)</option>
@@ -43,7 +35,6 @@
                     </select>
                 </div>
 
-                <!-- Filtro de Tipo de Peça -->
                 <div class="flex-grow max-w-xs">
                     <select id="tipo-peca" class="filter-dropdown w-full p-2 border border-transparent rounded-lg text-sm outline-none">
                         <option value="">Tipo de Peça (Todos)</option>
@@ -62,7 +53,6 @@
         </div>
 
         <section id="gallery-section">
-            <!-- Container das Colunas Físicas (Mantém as imagens no lugar ao carregar mais) -->
             <div id="gallery-container">
                 <div class="gallery-column"></div>
                 <div class="gallery-column"></div>
@@ -70,7 +60,6 @@
                 <div class="gallery-column"></div>
             </div>
 
-            <!-- Botão Carregar Mais (Aparece apenas se houverem mais de 12 itens) -->
             <div id="load-more-container" class="flex justify-center mt-12" style="display: none;">
                 <button id="load-more-btn" class="bg-black text-white px-10 py-4 font-bold hover:scale-105 transition-transform shadow-2xl uppercase tracking-widest">
                     Ver mais peças
@@ -80,7 +69,6 @@
 
     </main>
 
-    <!-- SECÇÃO DE DESTAQUE (CARD SOBRE A MARCA) -->
     <section id="highlight-section" class="py-24">
         <div id="highlight-card" class="mx-auto rounded-[3rem] p-10 md:p-16 shadow-2xl">
             <div class="flex flex-col md:flex-row items-center justify-between gap-12">
@@ -101,12 +89,7 @@
         Feito com muito carinho pelo time UERN/Mossoró
     </footer>
 
-    <!-- LÓGICA DE DADOS E RENDERIZAÇÃO -->
     <script>
-        /**
-         * NOVA ESTRUTURA DO DATABASE
-         * Preencha com as suas informações aqui.
-         */
         const database = [
             { 
                 id: 1, 
@@ -429,10 +412,6 @@
         const itemsPerPage = 12;
         let displayedCount = 0; 
 
-        /**
-         * FUNÇÃO DE RENDERIZAÇÃO OTIMIZADA
-         * @param {boolean} isNewFilter - Define se deve limpar a galeria (true) ou apenas anexar (false)
-         */
         function renderGallery(isNewFilter = false) {
             const selEst = document.getElementById('estilista').value;
             const selTipo = document.getElementById('tipo-peca').value;
@@ -445,14 +424,12 @@
                 currentLimit = 12;
             }
 
-            // Filtro dinâmico
             const filtered = database.filter(item => {
                 const matchesEst = !selEst || item.est === selEst;
                 const matchesTipo = !selTipo || item.tipo === selTipo;
                 return matchesEst && matchesTipo;
             });
 
-            // Seleciona a próxima fatia (slice) para exibir
             const toAppend = filtered.slice(displayedCount, currentLimit);
             const activeCols = columns.filter(col => getComputedStyle(col).display !== 'none');
 
@@ -477,16 +454,13 @@
                 `;
                 activeCols[colIndex].appendChild(itemDiv);
 
-                // Delay suave para o fade-in de cada item
                 setTimeout(() => {
                     itemDiv.classList.add('fade-in');
                 }, 50 * index);
             });
 
-            // Atualiza o total de itens já mostrados na tela
             displayedCount += toAppend.length;
 
-            // Gerencia o botão "Ver Mais"
             if (loadMoreContainer) {
                 loadMoreContainer.style.display = (filtered.length > currentLimit) ? 'flex' : 'none';
             }
@@ -496,13 +470,11 @@
             const largeLogo = document.getElementById('large-logo');
             if (largeLogo) setTimeout(() => largeLogo.classList.add('logo-animated'), 200);
 
-            // Ouvinte: Ver Mais (Apenas anexa novos itens)
             document.getElementById('load-more-btn').addEventListener('click', () => {
                 currentLimit += itemsPerPage;
                 renderGallery(false); 
             });
 
-            // Ouvintes: Filtros (Limpam e reiniciam)
             document.querySelectorAll('select').forEach(select => {
                 select.addEventListener('change', () => renderGallery(true));
             });
@@ -513,10 +485,8 @@
                 renderGallery(true);
             });
 
-            // Ajuste responsivo ao girar tela ou redimensionar
             window.addEventListener('resize', () => renderGallery(true));
 
-            // Chamada inicial
             renderGallery(true);
         });
     </script>
