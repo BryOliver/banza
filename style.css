@@ -292,13 +292,17 @@ nav.custom-nav {
 .img-drop-shadow {
     filter: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
 }
-@media (max-width: 1024px){
-    .team{
+@media (max-width: 767px){
+    .team-div{
         padding-left: 1rem;
         padding-right: 1rem;
     }
 }
-
+@media (max-width: 320px){
+    .team-div h2{
+        font-size: 2rem;
+    }
+}
 @media (min-width: 768px) and (max-width: 1570px){
     .team-div{
         padding-left: 3rem;
