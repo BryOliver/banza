@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre | Banza</title>
+    <link rel="icon" type="image/x-icon" href="imagens/favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --banza-orange: #E1752D;
+            --nude-bg: #F2DCDC;
+            --primary-red: #B2002F;
+            --off-white: #F9F9F9; 
+        }
+
+        nav.custom-nav {
+            background-color: transparent;
+            backdrop-filter: none;
+            border-bottom: none;
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            transition: background-color 0.3s ease;
+        }
+
+        .editorial-section {
+            padding: 8rem 0;
+            background-color: var(--nude-bg);
+        }
+
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        @media (max-width: 1024px) {
+            .editorial-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        #team-section {
+            background-color: var(--primary-red);
+            color: var(--nude-bg);
+            padding: 6rem 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member-frame {
+            aspect-ratio: 1 / 1;
+            width: 100%;
+            overflow: hidden;
+            border: none;
+            background-color: transparent;
+        }
+
+        .team-member-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: none;
+            transition: all 0.5s ease;
+        }
+
+        .team-member-frame:hover img {
+            transform: scale(1.05);
+        }
+
+        .serif-italic {
+            font-family: 'Times New Roman', Times, serif;
+            font-style: italic;
+        }
+
+        #banner.about-hero {
+            height: 85vh;
+            background-image: linear-gradient(rgba(178, 0, 47, 0.527), rgba(26, 2, 8, 0.7)), url('imagens/prods/6.webp');
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .big-branding {
+            font-size: clamp(4rem, 15vw, 12rem);
+            font-weight: 900;
+            line-height: 0.8;
+            letter-spacing: -0.05em;
+            color: var(--nude-bg);
+            margin-top: 4rem;
+            text-transform: uppercase;
+        }
+
+        .caption {
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-weight: bold;
+            opacity: 0.6;
+        }
+
+        .nav-back-button {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+            color: #000000 !important; 
+        }
+
+        .arrow-pill {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 34px;
+            border: 1px solid #000000; 
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-back-button:hover .arrow-pill {
+            background-color: #000000; 
+            color: var(--nude-bg);
+            border-color: #000000;
+        }
+
+        .img-drop-shadow {
+            filter: drop-shadow(0 20px 13px rgba(0, 0, 0, 0.03)) drop-shadow(0 8px 5px rgba(0, 0, 0, 0.08));
+        }
+        @media (max-width: 1024px){
+            .team{
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="px-8 py-6 flex justify-start items-center custom-nav">
+        <a href="index2.html" class="nav-back-button group">
+            <div class="arrow-pill">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </div>
+            <span class="uppercase text-[0.7rem] font-bold tracking-[0.2em]">
+                Voltar à Galeria
+            </span>
+        </a>
+    </nav>
+
+    <header id="banner" class="about-hero">
+        <div id="large-logo" class="logo-animated flex flex-col items-center">
+            <h1 class="uppercase font-light tracking-[0.2em] text-white text-4xl md:text-6xl mb-10">
+                Sobre o Projeto
+            </h1>
+
+            <div class="w-24 md:w-32 opacity-80">
+                <img src="imagens/logo6.png" alt="Logo Detalhe" class="w-full h-auto" onerror="this.src='https://via.placeholder.com/150?text=BANZA'">
+            </div>
+        </div>
+    </header>
+
+    <section class="editorial-section px-6 md:px-24">
+        <div class="container mx-auto">
+            <h2 class="caption mb-12" style="color: var(--primary-red);">O Conceito</h2>
+            <div class="editorial-grid">
+                <div class="fade-in">
+                    <img src="imagens/logo2.png" alt="Conceito Banza" class="w-full img-drop-shadow" onerror="this.src='Ativo 5.jpg'">
+                </div>
+                <div class="max-w-xl">
+                    <h3 class="text-4xl md:text-5xl font-bold mb-8 leading-tight" style="color: var(--primary-red);">Mapeando <br>Manifestos <br><span class="serif-italic lowercase text-[var(--banza-orange)]">Visuais.</span></h3>
+                    <div class="space-y-6 text-lg text-gray-700 leading-relaxed text-justify"  style="font-family: sans-serif;">
+                        <p>
+                            Há imagens que não cabem só no olhar.
+                            São texturas que quase podem ser tocadas, cores que parecem ter cheiro, roupas que lembram vozes antigas.
+                            A moda afro-brasileira é assim: ela desperta sentimentos antes de despertar ideias.
+                            Cada referência aqui é uma sensação guardada em foto.
+                        </p>
+                        <p class="text-xl italic font-bold" style="color: var(--primary-red); border-left: 4px solid var(--banza-orange); padding-left: 1.5rem;">
+                            Há algo de revolucionário no simples ato de se vestir quando o corpo carrega memórias que o mundo tentou apagar.
+                        </p>
+                        <p>
+                           A moda afro-brasileira não é uma categoria: é o centro, é o início, é o fundamento visual de boa parte do que o Brasil chama de estilo.
+                        </p>
+                        <p>
+                            <span class="font-bold" style="font-family: alte-haas-grotesk;">BANZA</span> existe para devolver esse protagonismo ao seu lugar de origem.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team-section" class="px-12 md:px-24">
+        <div class="container mx-auto">
+            <div class="flex justify-between items-end mb-16 border-b border-white/20 pb-4">
+                <h2 class="text-5xl font-light uppercase tracking-tighter">O Time</h2>
+                <span class="caption text-white opacity-100">UERN / Mossoró</span>
+            </div>
+
+            <div class="team-grid">
+                <div>
+                    <div class="team-member-frame mb-4">
+                        <img src="imagens/bryan.webp" alt="Equipe">
+                    </div>
+                    <h4 class="font-bold uppercase text-sm tracking-widest team">Bryan Sousa</h4>
+                    <p class="text-[0.6rem] uppercase opacity-80 mt-1 team">Desenvolvimento</p>
+                </div>
+
+                <div>
+                    <div class="team-member-frame mb-4">
+                        <img src="imagens/joao.webp" alt="Equipe">
+                    </div>
+                    <h4 class="font-bold uppercase text-sm tracking-widest team">João Lucas</h4>
+                    <p class="text-[0.6rem] uppercase opacity-80 mt-1 team">Identidade Visual</p>
+                </div>
+
+                <div>
+                    <div class="team-member-frame mb-4">
+                        <img src="imagens/larissa.webp" alt="Equipe">
+                    </div>
+                    <h4 class="font-bold uppercase text-sm tracking-widest team">Larissa Santiago</h4>
+                    <p class="text-[0.6rem] uppercase opacity-80 mt-1 team">Curadoria & Pesquisa</p>
+                </div>
+
+                <div>
+                    <div class="team-member-frame mb-4">
+                        <img src="imagens/luisa.webp" alt="Equipe">
+                    </div>
+                    <h4 class="font-bold uppercase text-sm tracking-widest team">Luisa Machado</h4>
+                    <p class="text-[0.6rem] uppercase opacity-80 mt-1 team">Redação</p>
+                </div>
+
+                <div>
+                    <div class="team-member-frame mb-4">
+                        <img src="imagens/erik.webp" alt="Equipe">
+                    </div>
+                    <h4 class="font-bold uppercase text-sm tracking-widest team">Érik Ruan</h4>
+                    <p class="text-[0.6rem] uppercase opacity-80 mt-1 team">Prof. Orientador</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="editorial-section px-6 md:px-24">
+        <div class="container mx-auto max-w-4xl text-center">
+            <h2 class="caption mb-8" style="color: var(--primary-red);">Nossa Missão</h2>
+            <p class="text-3xl md:text-5xl font-light leading-tight mb-12 uppercase italic" style="color: var(--primary-red);">
+                Colocar a identidade <br><span class="font-bold text-[var(--banza-orange)]">afro-brasileira</span> <br> como centro da moda.
+            </p>
+            <div class="flex justify-center gap-12 items-center">
+                <img src="imagens/logo8.png" alt="Logo Laranja" class="h-8">
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center py-4 mt-8 text-gray-600 text-sm" style="background-color: #B2002F; color: #F2DCDC; font-family: 'alte-haas-grotesk', sans-serif; font-size: 1rem;">
+        Feito com muito carinho pelo time UERN/Mossoró
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const largeLogo = document.getElementById('large-logo');
+            if (largeLogo) {
+                setTimeout(() => {
+                    largeLogo.classList.add('logo-animated');
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>
