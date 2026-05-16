@@ -299,7 +299,7 @@ nav.custom-nav {
     }
 }
 
-@media (min-width: 768px) and (max-width: 1440px){
+@media (min-width: 768px) and (max-width: 1570px){
     .team-div{
         padding-left: 3rem;
         padding-right: 3rem;
